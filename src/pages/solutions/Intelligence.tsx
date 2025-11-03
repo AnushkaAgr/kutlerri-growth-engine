@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, DollarSign, BarChart3, Database, Zap } from "lucide-react";
-import analyticsDashboard from "@/assets/analytics-dashboard.jpg";
+// import analyticsDashboard from "@/assets/analytics-dashboard.jpg";
 
 const Intelligence = () => {
   return (
@@ -46,11 +46,11 @@ const Intelligence = () => {
             </Button>
           </div>
           <div className="relative">
-            <img
+            {/* <img
               src={analyticsDashboard}
               alt="Restaurant cost analytics dashboard"
               className="rounded-xl shadow-xl border border-border"
-            />
+            /> */}
           </div>
         </div>
       </section>

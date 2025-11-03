@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, ArrowRight, MapPin, Target, Repeat, TrendingUp } from "lucide-react";
-import cateringLeads from "@/assets/catering-leads.jpg";
+// import cateringLeads from "@/assets/catering-leads.jpg";
 
 const Catering = () => {
   return (
@@ -46,11 +46,7 @@ const Catering = () => {
             </Button>
           </div>
           <div className="relative">
-            <img
-              src={cateringLeads}
-              alt="AI-powered catering lead generation map"
-              className="rounded-xl shadow-xl border border-border"
-            />
+            
           </div>
         </div>
       </section>

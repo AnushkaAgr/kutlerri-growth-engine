@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "./ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,170 +9,85 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold gradient-primary bg-clip-text text-transparent">
-              Kutlerri
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <div className="group relative">
-              <button className="flex items-center space-x-1 text-foreground hover:text-accent transition-smooth">
-                <span>Solutions</span>
-                <ChevronDown className="h-4 w-4" />
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-64 bg-card rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-smooth border border-border">
-                <div className="p-2">
-                  <Link
-                    to="/solutions/catering"
-                    className="block px-4 py-3 hover:bg-secondary rounded-md transition-smooth"
-                  >
-                    <div className="font-medium">B2B Catering Leads</div>
-                    <div className="text-sm text-muted-foreground">AI-powered lead generation</div>
-                  </Link>
-                  <Link
-                    to="/solutions/intelligence"
-                    className="block px-4 py-3 hover:bg-secondary rounded-md transition-smooth"
-                  >
-                    <div className="font-medium">Restaurant Intelligence</div>
-                    <div className="text-sm text-muted-foreground">Cost & performance analytics</div>
-                  </Link>
-                  <Link
-                    to="/solutions/delivery"
-                    className="block px-4 py-3 hover:bg-secondary rounded-md transition-smooth"
-                  >
-                    <div className="font-medium">Delivery Optimization</div>
-                    <div className="text-sm text-muted-foreground">Coming Soon</div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <Link
-              to="/how-it-works"
-              className={`${
-                isActive("/how-it-works") ? "text-accent" : "text-foreground"
-              } hover:text-accent transition-smooth`}
-            >
-              How It Works
-            </Link>
-            <Link
-              to="/pricing"
-              className={`${
-                isActive("/pricing") ? "text-accent" : "text-foreground"
-              } hover:text-accent transition-smooth`}
-            >
-              Pricing
-            </Link>
-            <Link
-              to="/resources"
-              className={`${
-                isActive("/resources") ? "text-accent" : "text-foreground"
-              } hover:text-accent transition-smooth`}
-            >
-              Resources
-            </Link>
-            <Link
-              to="/about"
-              className={`${
-                isActive("/about") ? "text-accent" : "text-foreground"
-              } hover:text-accent transition-smooth`}
-            >
-              About
-            </Link>
+    <nav className="fixed top-[36px] left-1/2 -translate-x-1/2 w-[90%] max-w-[1216px] bg-black text-white z-50 shadow-md rounded-[41.81px] transition-all duration-300">
+      <div className="flex items-center justify-between px-[32px] py-[12px] lg:px-[53px] lg:py-[11px]">
+        {/* Logo */}
+        <Link to="/" className="flex items-center space-x-2">
+          <div className="font-onlygraphic font-bold text-[24px] lg:text-[27.32px] tracking-[-0.03em] leading-[100%] text-white">
+            Kutlerri
           </div>
+        </Link>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="ghost" asChild>
-              <Link to="/contact">Contact</Link>
-            </Button>
-            <Button variant="cta" size="lg" asChild>
-              <Link to="/audit">Get Free Audit</Link>
-            </Button>
-          </div>
+        {/* Desktop Menu (only for large screens) */}
+        <ul className="hidden lg:flex items-center space-x-10 font-medium text-[16px]">
+          {[
+            { label: "Product", path: "/product" },
+            { label: "Resources", path: "/resources" },
+            { label: "Company", path: "/company" },
+            { label: "Pricing", path: "/pricing" },
+          ].map(({ label, path }) => (
+            <li
+              key={path}
+              className={`hover:text-gray-400 transition ${
+                isActive(path) ? "text-gray-300" : ""
+              }`}
+            >
+              <Link to={path}>{label}</Link>
+            </li>
+          ))}
+        </ul>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-foreground"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
+        {/* Contact Button (Desktop only) */}
+        <Link
+          to="/contact"
+          className="hidden lg:flex items-center justify-center w-[153px] h-[42px] rounded-[77px] border-2 border-[#FF5940] text-[#FF5940] font-semibold hover:bg-[#FF5940] hover:text-white transition duration-300 ease-in-out active:bg-[#ff6f59]"
+        >
+          Contact
+        </Link>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="lg:hidden py-4 border-t border-border">
-            <div className="flex flex-col space-y-4">
-              <Link
-                to="/solutions/catering"
-                className="text-foreground hover:text-accent transition-smooth"
-                onClick={() => setIsOpen(false)}
-              >
-                B2B Catering Leads
+        {/* Mobile & Tablet Menu Toggle */}
+        <button
+          className="lg:hidden flex items-center text-white focus:outline-none active:scale-90 transition-transform"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
+      </div>
+
+      {/* Mobile & Tablet Dropdown */}
+      <div
+        className={`lg:hidden bg-black rounded-b-[41.81px] border-t border-gray-800 transition-all duration-300 overflow-hidden ${
+          isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="flex flex-col items-center space-y-6 py-6 text-lg font-medium">
+          {[
+            { label: "Product", path: "/product" },
+            { label: "Resources", path: "/resources" },
+            { label: "Company", path: "/company" },
+            { label: "Pricing", path: "/pricing" },
+          ].map(({ label, path }) => (
+            <li
+              key={path}
+              className={`hover:text-gray-400 transition ${
+                isActive(path) ? "text-gray-300" : ""
+              }`}
+            >
+              <Link to={path} onClick={() => setIsOpen(false)}>
+                {label}
               </Link>
-              <Link
-                to="/solutions/intelligence"
-                className="text-foreground hover:text-accent transition-smooth"
-                onClick={() => setIsOpen(false)}
-              >
-                Restaurant Intelligence
-              </Link>
-              <Link
-                to="/solutions/delivery"
-                className="text-foreground hover:text-accent transition-smooth"
-                onClick={() => setIsOpen(false)}
-              >
-                Delivery Optimization
-              </Link>
-              <Link
-                to="/how-it-works"
-                className="text-foreground hover:text-accent transition-smooth"
-                onClick={() => setIsOpen(false)}
-              >
-                How It Works
-              </Link>
-              <Link
-                to="/pricing"
-                className="text-foreground hover:text-accent transition-smooth"
-                onClick={() => setIsOpen(false)}
-              >
-                Pricing
-              </Link>
-              <Link
-                to="/resources"
-                className="text-foreground hover:text-accent transition-smooth"
-                onClick={() => setIsOpen(false)}
-              >
-                Resources
-              </Link>
-              <Link
-                to="/about"
-                className="text-foreground hover:text-accent transition-smooth"
-                onClick={() => setIsOpen(false)}
-              >
-                About
-              </Link>
-              <div className="pt-4 space-y-2">
-                <Button variant="ghost" className="w-full" asChild>
-                  <Link to="/contact" onClick={() => setIsOpen(false)}>
-                    Contact
-                  </Link>
-                </Button>
-                <Button variant="cta" className="w-full" asChild>
-                  <Link to="/audit" onClick={() => setIsOpen(false)}>
-                    Get Free Audit
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
+            </li>
+          ))}
+          <li>
+            <Link
+              to="/contact"
+              onClick={() => setIsOpen(false)}
+              className="w-[140px] h-[40px] flex items-center justify-center rounded-full border-2 border-[#FF5940] text-[#FF5940] font-semibold hover:bg-[#FF5940] hover:text-white transition duration-300 ease-in-out active:bg-[#ff6f59]"
+            >
+              Contact
+            </Link>
+          </li>
+        </ul>
       </div>
     </nav>
   );
