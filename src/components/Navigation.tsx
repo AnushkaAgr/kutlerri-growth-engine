@@ -40,7 +40,7 @@ const Navigation = () => {
         {/* Contact Button (Desktop only) */}
         <Link
           to="/contact"
-          className="hidden lg:flex items-center justify-center w-[153px] h-[42px] rounded-[77px] border-2 border-[#FF5940] text-[#FF5940] font-semibold hover:bg-[#FF5940] hover:text-white transition duration-300 ease-in-out active:bg-[#ff6f59]"
+          className="hidden lg:flex items-center justify-center w-[153px] h-[42px] rounded-[77px] border-2 border-[#7138F5] text-[#7138F5] font-semibold hover:bg-[#7138F5] hover:text-white transition duration-300 ease-in-out active:bg-[#ff6f59]"
         >
           Contact
         </Link>
@@ -82,7 +82,7 @@ const Navigation = () => {
             <Link
               to="/contact"
               onClick={() => setIsOpen(false)}
-              className="w-[140px] h-[40px] flex items-center justify-center rounded-full border-2 border-[#FF5940] text-[#FF5940] font-semibold hover:bg-[#FF5940] hover:text-white transition duration-300 ease-in-out active:bg-[#ff6f59]"
+              className="w-[140px] h-[40px] flex items-center justify-center rounded-full border-2 border-[#7138F5] text-[#7138F5] font-semibold hover:bg-[#7138F5] hover:text-white transition duration-300 ease-in-out active:bg-[#ff6f59]"
             >
               Contact
             </Link>
