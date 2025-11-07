@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import Logo from "../assets/Images/Logo/Frame 68.png"
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,12 +15,12 @@ const Navigation = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
           <div className="font-onlygraphic font-bold text-[24px] lg:text-[27.32px] tracking-[-0.03em] leading-[100%] text-white">
-            Kutlerri
+            <img src={Logo} alt="" />
           </div>
         </Link>
 
         {/* Desktop Menu (only for large screens) */}
-        <ul className="hidden lg:flex items-center space-x-10 font-medium text-[16px]">
+        <ul className="hidden lg:flex items-center space-x-10 font-medium text-[16px] font-gotham">
           {[
             { label: "Product", path: "/product" },
             { label: "Resources", path: "/resources" },
@@ -37,14 +38,24 @@ const Navigation = () => {
           ))}
         </ul>
 
-        {/* Contact Button (Desktop only) */}
         <Link
-          to="/contact"
-          className="hidden lg:flex items-center justify-center w-[153px] h-[42px] rounded-[77px] border-2 border-[#7138F5] text-[#7138F5] font-semibold hover:bg-[#7138F5] hover:text-white transition duration-300 ease-in-out active:bg-[#ff6f59]"
-        >
-          Contact
-        </Link>
-
+  to="/contact"
+  className="
+    hidden lg:flex
+    items-center justify-center
+    w-[153px] h-[42px]
+    rounded-[77px]
+    bg-[#7138F5]           
+    text-white             
+    font-semibold
+    hover:bg-[#4517B0]     
+    transition duration-300 ease-in-out
+    active:bg-[#4517B0]    
+    font-gotham
+  "
+>
+  Contact Us
+</Link>
         {/* Mobile & Tablet Menu Toggle */}
         <button
           className="lg:hidden flex items-center text-white focus:outline-none active:scale-90 transition-transform"

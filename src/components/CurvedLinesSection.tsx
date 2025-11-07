@@ -4,8 +4,8 @@ import Logo from "../assets/Images/Logo/Layer 4.png";
 
 const CurvedLinesSection: React.FC = () => {
   return (
-    <section className="relative w-full flex justify-center bg-white overflow-hidden mt-469px" >
-      {/* Background Lines Image */}
+    <section className="relative w-full flex justify-center bg-white overflow-hidden mt-[0px]">
+     
       <img
         src={CurvedLinesImage}
         alt="Kutlerri curved lines section"
@@ -19,7 +19,7 @@ const CurvedLinesSection: React.FC = () => {
         "
       />
 
-      {/* Floating Logo Box */}
+      
       <div
         className="
           absolute
@@ -28,10 +28,10 @@ const CurvedLinesSection: React.FC = () => {
           bg-black
           top-[63%] left-[50%]
           -translate-x-1/2 -translate-y-1/2
-          transition-all duration-500 ease-out
-          hover:-translate-y-[12px]  /* jump effect */
-          hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] /* oval shadow illusion */
+          transition-transform duration-500 ease-out
+          hover:scale-110
           shadow-[0_10px_20px_rgba(0,0,0,0.25)]
+          hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)]
         "
         style={{
           width: "clamp(50px, 8vw, 82px)",
@@ -41,7 +41,7 @@ const CurvedLinesSection: React.FC = () => {
         <img
           src={Logo}
           alt="Kutlerri Logo"
-          className="object-contain"
+          className="object-contain transition-transform duration-500 ease-out hover:scale-110"
           style={{
             width: "clamp(24px, 3.8vw, 34px)",
             height: "clamp(24px, 3.8vw, 34px)",
