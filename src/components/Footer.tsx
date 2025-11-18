@@ -1,6 +1,6 @@
 import React from "react";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
-import Logo from "../assets/Images/Logo/Frame 68 (1).png";
+import Logo from "../assets/Images/Logo/Logo Full Dark.png";
 
 const Footer: React.FC = () => {
   return (
@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
             href="/contact"
             className="w-full sm:w-[195px] h-[42px] rounded-[22px] px-[24px] py-[10px] flex items-center justify-center gap-[10px] bg-[#7138F5] text-white text-[14px] font-semibold hover:bg-[#5e2fd3] transition-colors font-gotham"
           >
-            Contact us
+            Discover Kutlerri
           </a>
         </div>
 
