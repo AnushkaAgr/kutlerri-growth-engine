@@ -99,10 +99,10 @@ export const StackCard = ({ card, index, totalCards }: StackCardProps) => {
             }}
             viewport={{ once: true }}
             className="
-              w-[553px]
+              w-[653px]
               h-auto
               mt-[77px]
-              ml-[84px]
+              ml-[50px]
               flex flex-col
               text-left
             "
@@ -138,7 +138,7 @@ export const StackCard = ({ card, index, totalCards }: StackCardProps) => {
             <p
               className="
                 mt-[70px]
-                font-gotham font-bold
+                font-gotham 
                 text-[22.46px]
                 leading-[112%]
                 tracking-[-0.66px]
@@ -160,33 +160,60 @@ export const StackCard = ({ card, index, totalCards }: StackCardProps) => {
             </p>
 
             {/* BUTTON */}
-            {card.button_content && (
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.96 }}
-                className="
-                  bg-[#9F7CEF]
-                  text-white
-                  font-gotham font-medium
-                  text-[17px]
-                  leading-[19.25px]
-                  px-6 py-3
-                  rounded-[67.28px]
-                  shadow-md
-                  transition-all
-                  duration-300
-                  hover:bg-[#5b2dd4]
-                  hover:shadow-lg
-                  mt-[70px]
-                "
-                style={{
-                  width: "221.279px",
-                  height: "47.176px",
-                }}
-              >
-                {card.button_content}
-              </motion.button>
-            )}
+        {card.button_content && (
+  <motion.button
+    onClick={() => {
+      let targetId = "";
+
+      if (
+        card.title === "RestroBrain" &&
+        card.button_content === "Know More"
+      ) {
+        targetId = "restrobrain-section";
+      }
+
+      if (
+        card.title === "CaterReach" &&
+        card.button_content === "Know More"
+      ) {
+        targetId = "caterreach-section";
+      }
+
+      if (targetId) {
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.96 }}
+    className="
+      bg-[#9F7CEF]
+      text-white
+      font-gotham font-medium
+      text-[17px]
+      leading-[19.25px]
+      px-6 py-3
+      rounded-[67.28px]
+      shadow-md
+      transition-all
+      duration-300
+      hover:bg-[#5b2dd4]
+      hover:shadow-lg
+      mt-[70px]
+      cursor-pointer
+    "
+    style={{
+      width: '221.279px',
+      height: '47.176px',
+    }}
+  >
+    {card.button_content}
+  </motion.button>
+)}
+
+
           </motion.div>
         </div>
       </motion.div>

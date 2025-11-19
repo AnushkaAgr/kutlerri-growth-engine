@@ -22,6 +22,7 @@ export default {
         inter: ["Inter", "sans-serif"],    
         onlygraphic: ["Onlygraphic", "sans-serif"],
         gotham: ["Gotham", "sans-serif"],
+         garnett: ["Garnett", "sans-serif"],
       },
     },
   },

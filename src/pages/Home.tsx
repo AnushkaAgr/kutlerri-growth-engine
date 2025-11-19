@@ -5,12 +5,19 @@ import card2 from "../assets/Images/Card2.png";
 import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
-import HeroImage from "../assets/Images/HeroSection.png"
-import Services from "../assets/Images/Frame 427321889.png"
-import ServiceDesc from "../assets/Images/ServiceDescription.png"
+import HeroImage from "../assets/Images/HeroSectionImage.png"
+import Services from "../assets/Images/Services.png"
+
 import React, { useEffect } from "react";
 import TestimonialSection from "@/components/TestimonialSection";  
-import TestimonialFooter from "../assets/Images/Image.png"
+
+import restrobrainData from "../assets/data/Frame-427321905.json";
+import caterreachData from "../assets/data/Frame-427321953 (2).json";
+import Lottie from "lottie-react";
+import Fork from "../assets/Images/Elements/Fork.png"
+import Spoon from "../assets/Images/Elements/Spoon.png"
+import Knife from "../assets/Images/Elements/Knife.png"
+
 
 const cards: CardData[] = [
   {
@@ -73,175 +80,109 @@ const Home = () => {
   return (
     <div className="relative bg-background">
 
-      {/* HERO SECTION */}
-      <section
+     {/* HERO SECTION */}
+<section
+  id="hero-section"
+  className="
+    w-full
+    min-h-[900px]
+    bg-[#E5D9FF]
+    pt-32 md:pt-35
+    px-6 md:px-16 lg:px-24
+    flex
+    items-center
+    justify-between
+    relative
+    overflow-hidden
+  "
+>
+
+  {/* LEFT CONTENT */}
+  <div className="flex flex-col items-start max-w-[600px] z-10 -ml-4 md:-ml-10 lg:-ml-9.5">
+
+    <h1
+      className="
+        font-garnett font-normal
+        text-[64px] md:text-[96px]
+        leading-[107%]
+        tracking-[-2px]
+        text-black
+      "
+    >
+      We Grow Restaurants Intelligently
+    </h1>
+
+    <p
+      className="
+        font-gotham font-light
+        text-[20px] md:text-[24px]
+        leading-[120%]
+        text-black
+        mt-6
+      "
+    >
+      Boosts sales, improves margins, cuts prime costs, and brings steady B2B catering leads, all in one platform.
+    </p>
+
+    {/* BUTTONS */}
+    <div className="mt-10 flex gap-4">
+      <button
         className="
-          w-full
-          h-[927px]
-          bg-[#E5D9FF]
-          pt-32 md:pt-40
-          px-4 md:px-6
-          flex flex-col
-          items-start
-          justify-end
-          text-left
-          relative
-          z-10
+          w-[225px] h-[42px]
+          rounded-full
+          border border-black
+          font-gotham font-medium
+          hover:bg-black hover:text-white
+          transition
         "
       >
-      
-        <div
-          className="
-            absolute
-            top-[148px] left-[72px]
-            w-[1297px] h-[631px]
-            flex
-            items-start
-            justify-start
-            gap-[127px]
-          "
-        >
-          
-          <div className="w-[544px] h-[548px] opacity-100 rotate-0">
-            <div className="w-[624px] h-[553px]">
-              <div className="w-[624px] h-[476px]">
+        Discover Kutlerri
+      </button>
 
-                
-                <h1
-                  className="
-                    font-garnett font-normal
-                    text-[96px]
-                    leading-[120%]
-                    tracking-[-2px]
-                    text-black
-                    w-[624px]
-                    h-[345px]
-                    opacity-100
-                    rotate-0
-                  "
-                >
-                  We grow Restaurants intelligently
-                </h1>
+      <button
+        className="
+          w-[197px] h-[42px]
+          rounded-full
+          bg-[#7138F5]
+          text-white
+          font-gotham font-medium
+          hover:bg-black
+          transition
+        "
+      >
+        Get a Demo
+      </button>
+    </div>
+  </div>
 
-               
-                <p
-                  className="
-                    font-gotham font-light
-                    text-[24px]
-                    leading-[120%]
-                    text-black
-                    w-[534px]
-                    h-[116px]
-                    opacity-100
-                    rotate-0
-                  "
-                >
-                  AI-driven growth, analytics, and catering lead generation that
-                  increase revenue, reduce prime costs, and expand margins — all
-                  in one intelligent system.
-                </p>
-              </div>
-
-              <div className="w-[430px] h-[42px] flex gap-[20px] items-center">
-
-  {/* Button 1 — Outline Button */}
-  <button
-    className="
-      w-[225px]
-      h-[42px]
-      rounded-[59.9px]
-      border-[1.07px] border-black
-      flex items-center justify-center
-      transition duration-300
-      hover:bg-black hover:text-white
-      active:scale-95
-    "
-  >
-    <span
+  <div className="absolute right-0 top-0 h-full flex items-end pointer-events-none">
+    <img
+      src={HeroImage}
+      alt=""
       className="
-        font-gotham font-medium
-        text-[17.11px]
-        leading-[19.25px]
-        text-center
-        w-[177px]
-        h-[20px]
+        h-[80%]
+        md:h-[95%]
+        lg:h-[95%]
+        object-contain
+        max-w-none
       "
-    >
-      How Kutlerri Works?
-    </span>
-  </button>
+    />
+  </div>
 
-  {/* Button 2 — Filled Purple Button */}
-  <button
-    className="
-      w-[197px]
-      h-[42px]
-      rounded-[59.9px]
-      bg-[#7138F5]
-      flex items-center justify-center
-      transition duration-300
-      hover:bg-black
-      active:scale-95
-    "
-  >
-    <span
-      className="
-        font-gotham font-medium
-        text-[17.11px]
-        leading-[19.25px]
-        text-center
-        w-[103px]
-        h-[20px]
-        text-white
-      "
-    >
-      Get a Demo
-    </span>
-  </button>
+</section>
 
-</div>
 
-            </div>
-          </div>
-
-          <div
-            className="
-              w-[626px]
-              h-[631px]
-              mr-0
-              opacity-100
-              rotate-0
-              rounded-tl-[250px]
-              rounded-br-[250px]
-              rounded-bl-[250px]
-              bg-white
-              translate-x-[60px]
-            "
-          >
-            <img className="
-               w-[626px]
-              h-[631px]
-              mr-0
-              opacity-100
-              rotate-0
-              rounded-tl-[250px]
-              rounded-br-[250px]
-              rounded-bl-[250px]
-            " src={HeroImage} alt="" />
-          </div>
-        </div>
-      </section>
    <div className="w-full flex justify-center px-6 md:px-20 mt-10">
   <h1
     className="
       font-garnett
       font-normal
-      text-[64px] md:text-[96px]
+      text-[62px] md:text-[96px]
       leading-[120%]
       tracking-[-2px]
       text-black
       break-words
-      max-w-[943px]
+      max-w-[1000px]
       text-left
     "
   >
@@ -261,62 +202,201 @@ const Home = () => {
           />
         ))}
       </div>
-      {/* SERVICES */}
-      <div className="-mt-[100px]">
-        <img src={Services} alt="" />
-        <div
-  className="
-    absolute
-    w-[722px]
-    h-[605.2567px]
-    top-[2600.87px]
-    left-[720px]
-    opacity-100
-    rotate-0
-  "
->
- <img src={ServiceDesc} alt="" />
+     
+{/* RESTROBRAIN SECTION */}
+<section className="w-full bg-white pt-24 pb-40 flex justify-center" id="restrobrain-section">
+  <div className="max-w-[1440px] w-full px-6 md:px-12 flex flex-col items-center">
+
+    {/* HEADING — SINGLE LINE ALWAYS */}
+    <h2
+      className="
+        font-garnett font-normal
+        text-[44px] md:text-[56px]
+        leading-[100%]
+        tracking-[-3%]
+        text-black
+        whitespace-nowrap
+        mb-20
+      "
+    >
+      RestroBrain – 
+      <span className="text-[#9F7CEF]"> Your Restaurant Intelligence Layer</span>
+    </h2>
+
+    {/* LOTTIE ANIMATION */}
+    <div
+      className="
+        w-[883px]
+        h-[514px]
+        flex justify-center items-center
+        overflow-hidden
+        rounded-xl
+      "
+    >
+      <div className="scale-[1.15]">
+        <Lottie animationData={restrobrainData} loop autoplay />
+      </div>
+    </div>
+
+    {/* INFO BLOCKS */}
+    <div
+      className="
+        w-[1098px]
+        h-[112px]
+        flex justify-between items-center
+        mt-10
+      "
+    >
+
+      {/* BLOCK 1 */}
+      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
+        <div className="w-[40px] h-[72px] flex items-center">
+          <img src={Fork} alt="fork" className="h-full object-contain" />
+        </div>
+        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+          See all your data in one place and fix margin leaks before they grow.
+        </p>
+      </div>
+
+      {/* BLOCK 2 */}
+      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
+        <div className="w-[40px] h-[72px] flex items-center">
+          <img src={Spoon} alt="spoon" className="h-[91px] object-contain" />
+        </div>
+        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+          Get clear insights on sales, inventory, and menu performance to reduce prime costs.
+        </p>
+      </div>
+
+      {/* BLOCK 3 */}
+      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
+        <div className="w-[40px] h-[72px] flex items-center">
+          <img src={Knife} alt="knife" className="h-full object-contain" />
+        </div>
+        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+          Predict demand and plan smarter to avoid stock outs, wastage, and lost revenue.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+      </section>
+      
+      {/* CaterReach*/}
+      <section className="w-full bg-white pt-20 pb-40 flex justify-center" id="caterreach-section">
+  <div className="max-w-[1440px] w-full px-6 md:px-12 flex flex-col items-center">
+
+    
+    <h2
+      className="
+        font-garnett font-normal
+        text-[44px] md:text-[56px]
+        leading-[100%]
+        tracking-[-3%]
+        text-black
+        whitespace-nowrap
+        mb-10
+      "
+    >
+      CaterReach-
+      <span className="text-[#9F7CEF]">Your Catering Revenue Engine</span>
+    </h2>
+
+    {/* LOTTIE ANIMATION */}
+    <div
+      className="
+        w-[883px]
+        h-[514px]
+        flex justify-center items-center
+        overflow-hidden
+        rounded-xl
+      "
+    >
+      <div className="scale-[1.15]">
+        <Lottie animationData={caterreachData} loop autoplay />
+      </div>
+    </div>
+
+    {/* INFO BLOCKS */}
+    <div
+      className="
+        w-[1098px]
+        h-[112px]
+        flex justify-between items-center
+        mt-8
+      "
+    >
+
+      {/* BLOCK 1 */}
+      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
+        <div className="w-[40px] h-[72px] flex items-center">
+          <img src={Fork} alt="fork" className="h-full object-contain" />
+        </div>
+        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+          Get verified B2B catering leads that match your capacity and cuisine.
+        </p>
+      </div>
+
+      {/* BLOCK 2 */}
+      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
+        <div className="w-[40px] h-[72px] flex items-center">
+          <img src={Spoon} alt="spoon" className="h-[91px] object-contain" />
+        </div>
+        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+          Reduce dependency on aggregators by building your own steady bulk order pipeline.
+
+        </p>
+      </div>
+
+      {/* BLOCK 3 */}
+      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
+        <div className="w-[40px] h-[72px] flex items-center">
+          <img src={Knife} alt="knife" className="h-full object-contain" />
+        </div>
+        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+          Close orders faster with pre-qualified leads + communication support.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+      </section>
+
+
+{/* SERVICES */}
+<div className="-mt-[100px] w-full h-[750px] relative overflow-hidden">
+
+ 
+  <img
+    src={Services}
+    alt="Services"
+    className="
+      absolute inset-0     
+      w-full h-full
+      object-cover           
+      object-center
+      m-0 p-0               
+      z-0
+    "
+  />
+
 </div>
 
-      </div>
+
+
+
 
       {/*Testimonial Section */}
 
-      <section className="relative w-full bg-black flex flex-col items-center justify-center text-white mt-0 overflow-hidden ml-0 py-24 ">
-        <TestimonialSection/>
+    <section className="relative w-full bg-[#EEE6FF] flex flex-col items-center justify-center text-black mt-0 overflow-hidden ml-0 py-10">
+  <TestimonialSection />
 
-        {/* CTA section unchanged */}
-        <div className="w-full max-w-7xl px-8 md:px-20 flex flex-col md:flex-row justify-between items-center mt-24 gap-10">
-          {/* CTA left */}
-          <div className="w-full md:w-[526.98px] flex flex-col gap-6 text-left">
-            <h2 className="font-onlygraphic font-normal text-[47.29px] leading-[120%] tracking-[-1.69px]">
-              <span className="text-white">Let’s Talk:</span>
-              <span className="text-gray-400">
-                {" "}
-                Build a Faster, Smarter Dining Experience
-              </span>
-            </h2>
+  
+</section>
 
-            <div className="flex gap-4">
-              <button className="bg-[#8A38F5] text-white px-6 py-3 rounded-full font-gotham text-sm hover:bg-[#5b2dd4] transition">
-                Start Now
-              </button>
-              {/* <button className="border border-gray-400 text-gray-300 px-6 py-3 rounded-full font-gotham text-sm hover:border-white hover:text-white transition">
-                Contact us
-              </button> */}
-            </div>
-          </div>
 
-          {/* CTA right */}
-          <div className="w-full md:w-[500px] flex justify-center md:justify-end">
-            <img
-              src={TestimonialFooter}
-              alt="Laptop mockup"
-              className="rounded-2xl shadow-lg"
-            />
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

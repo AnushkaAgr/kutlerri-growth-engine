@@ -1,6 +1,8 @@
 import React from "react";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
-import Logo from "../assets/Images/Logo/Logo Full Dark.png";
+import { FaFacebookF, FaInstagram , FaLinkedinIn } from "react-icons/fa";
+import Logo from "../assets/Images/Logo/LogoDark.png";
+import { motion } from "framer-motion";
+
 
 const Footer: React.FC = () => {
   return (
@@ -14,12 +16,27 @@ const Footer: React.FC = () => {
           </div>
 
          
-          <a
-            href="/contact"
-            className="w-full sm:w-[195px] h-[42px] rounded-[22px] px-[24px] py-[10px] flex items-center justify-center gap-[10px] bg-[#7138F5] text-white text-[14px] font-semibold hover:bg-[#5e2fd3] transition-colors font-gotham"
-          >
-            Discover Kutlerri
-          </a>
+         <motion.div
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.96 }}
+  className="hidden lg:flex"
+>
+  <a
+    href="/contact"
+    className="
+      flex items-center justify-center
+      w-[153px] h-[42px]
+      rounded-[77px]
+      bg-[#7138F5]
+      text-white font-semibold font-gotham
+      transition
+      hover:bg-[#5d28e6]
+    "
+  >
+    Get a Demo
+  </a>
+</motion.div>
+
         </div>
 
         
@@ -105,7 +122,7 @@ const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="hover:text-[#7138F5] transition-colors font-gotham"
                 >
-                  1901 Thornridge Cir. Shiloh, Hawaii 81063
+                 8 The Green, Dover, Delaware 19901,US
                 </a>
               </li>
               <li>
@@ -130,7 +147,16 @@ const Footer: React.FC = () => {
           <p>© 2025 Kutlerri. All rights reserved.</p>
           <div className="flex gap-4 justify-center">
             <a
-              href="https://instagram.com"
+              href="https://www.linkedin.com/company/kutlerri"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#7138F5] transition-colors font-gotham"
+            >
+              <FaLinkedinIn  size={16} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/kutlerri"
               aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
@@ -139,7 +165,7 @@ const Footer: React.FC = () => {
               <FaInstagram size={18} />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.linkedin.com/company/kutlerri"
               aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"

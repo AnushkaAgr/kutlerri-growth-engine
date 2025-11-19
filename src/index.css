@@ -83,6 +83,15 @@
   font-style: italic;
 }
 
+/* === GARNETT FONT === */
+@font-face {
+  font-family: "Garnett";
+  src: 
+       url("/src/assets/Fonts/garnett-font-family/Garnett-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 
 
@@ -100,9 +109,7 @@ body {
     @apply font-gotham
   }
 
-  h1{
-    @apply font-onlygraphic
-  }
+  
 }
 
 /* Hide scrollbar (cross-browser) */

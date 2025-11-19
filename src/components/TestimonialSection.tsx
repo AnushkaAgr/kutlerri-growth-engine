@@ -1,186 +1,163 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Logo from "../assets/Images/Logo/Frame 68.png";
 
 type Testimonial = {
   name: string;
   role: string;
   text: string;
-  image: string;
+  image: string;       
+  companyLogo: string;  
 };
 
 const testimonials: Testimonial[] = [
   {
-    name: "Sahil Rahman",
-    role: "Co Founder at RASA",
-    text: "Thanks to Kutlerri, we’ve gained about 3% pts on our prime costs, which goes straight to the bottom line in terms of improving our group profitability.",
-    image: "https://i.pravatar.cc/700?img=12",
+    name: "Rohan Malhotra",
+    role: "Owner, FlavourBridge Kitchens",
+    text: "Working with Starbucks-level volume made our insights indispensable. We cut food waste by 19% in the first month.",
+    image: "https://i.pravatar.cc/80?img=15",
+    companyLogo: "https://upload.wikimedia.org/wikipedia/sco/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/2560px-Starbucks_Corporation_Logo_2011.svg.png"
   },
   {
-    name: "Emily Jones",
-    role: "Design Head @ Nova",
-    text: "Kutlerri helped us reduce waste and optimize menus — our margins improved within weeks and operations are smoother.",
-    image: "https://i.pravatar.cc/700?img=5",
+    name: "Emily Carter",
+    role: "Operations Manager, FreshPlate Foods",
+    text: "Our forecasting accuracy jumped dramatically. Prep planning, staff scheduling, and inventory ordering became effortless.",
+    image: "https://i.pravatar.cc/80?img=23",
+    companyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Chick-fil-A_Logo.svg/2560px-Chick-fil-A_Logo.svg.png"
   },
+  
   {
-    name: "Liam Patel",
-    role: "Marketing Manager @ Vista",
-    text: "The platform is intuitive and the data-driven recommendations helped increase high-value orders from corporate clients.",
-    image: "https://i.pravatar.cc/700?img=2",
-  },
-  {
-    name: "Sophia Lee",
-    role: "Operations @ CloudChef",
-    text: "Real-time insights gave us the confidence to renegotiate supplier contracts and cut prime costs substantially.",
-    image: "https://i.pravatar.cc/700?img=9",
-  },
+    name: "Meera Natarajan",
+    role: "Head of Ops, The Curry Kitchen",
+    text: "The dashboards are incredibly clear. Our team finally understands real-time sales, wastage, prep, and labour insights.",
+    image: "https://i.pravatar.cc/80?img=47",
+    companyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/2560px-McDonald%27s_Golden_Arches.svg.png"
+  }
 ];
 
-const SlideVariants = {
-  enter: (dir: number) => ({
-    x: dir > 0 ? 80 : -80,
+
+const containerVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 100 : -100,
     opacity: 0,
-    position: "absolute" as const,
   }),
   center: {
     x: 0,
     opacity: 1,
-    position: "absolute" as const,
+    transition: { duration: 0.45, ease: "easeOut" },
   },
-  exit: (dir: number) => ({
-    x: dir > 0 ? -80 : 80,
+  exit: (direction: number) => ({
+    x: direction > 0 ? -100 : 100,
     opacity: 0,
-    position: "absolute" as const,
   }),
 };
 
 export default function TestimonialSection() {
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [direction, setDirection] = useState(1);
 
-  const last = testimonials.length - 1;
-
-  const next = useCallback(() => {
+  const next = () => {
     setDirection(1);
-    setIndex((i) => (i === last ? 0 : i + 1));
-  }, [last]);
+    setIndex((i) => (i + 1) % testimonials.length);
+  };
 
-  const prev = useCallback(() => {
+  const prev = () => {
     setDirection(-1);
-    setIndex((i) => (i === 0 ? last : i - 1));
-  }, [last]);
+    setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+  };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      next();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [next]);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [next, prev]);
+  const cards = [
+    testimonials[index % testimonials.length],
+    testimonials[(index + 1) % testimonials.length],
+  ];
 
   return (
-    <section className="relative w-full bg-black flex flex-col items-center justify-center text-white py-5 overflow-hidden">
-      <div className="text-left w-full max-w-7xl px-6 md:px-20 mb-10">
-        <h2 className="font-onlygraphic text-[36px] text-white leading-[150%] mb-2">
-          Testimonials
-        </h2>
-        <p className="opacity-70 font-gotham text-[16px] tracking-[-0.13px]">
-          Real stories from teams transforming workflow with Kutlerri
-        </p>
+    <section className="w-full bg-[#EEE6FF] py-20 px-6 flex flex-col items-center">
+      <h2 className="font-garnett text-[40px] text-black mb-14 tracking-tight">
+        What Our Partners Say
+      </h2>
+
+      <div className="relative max-w-7xl w-full">
+        <AnimatePresence custom={direction} mode="wait">
+          <motion.div
+            key={index}
+            custom={direction}
+            variants={containerVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            className="flex gap-10 justify-center"
+          >
+            {cards.map((card, i) => (
+              <div
+                key={i}
+                className="w-full max-w-[450px] bg-white rounded-3xl p-12 shadow-xl text-center border border-[#F2ECFF]"
+              >
+               
+                <img
+                  src={card.companyLogo}
+                  className="h-10 mb-8 mx-auto object-contain"
+                  alt="company logo"
+                />
+
+                <div className="text-[#D7C4FF] text-5xl leading-none mb-6">“</div>
+
+                <p className="text-[#4D455C] text-[17px] leading-relaxed mb-10">
+                  {card.text}
+                </p>
+
+                <img
+                  src={card.image}
+                  className="w-14 h-14 rounded-full border mb-3 mx-auto"
+                  alt={card.name}
+                />
+
+                <p className="font-semibold text-[#3E3446] text-lg">{card.name}</p>
+                <p className="text-sm text-[#7A6E85]">{card.role}</p>
+              </div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Navigation Arrows */}
+      
+<button
+  onClick={prev}
+  className="absolute left-0 top-1/2 -translate-y-1/2 
+             bg-white/50 backdrop-blur-md 
+             text-[#7138F5] p-3 rounded-full 
+             border border-[#7138F5]/30 
+             shadow-lg hover:bg-white/80 transition"
+>
+  ←
+</button>
+
+<button
+  onClick={next}
+  className="absolute right-0 top-1/2 -translate-y-1/2 
+             bg-white/50 backdrop-blur-md 
+             text-[#7138F5] p-3 rounded-full 
+             border border-[#7138F5]/30 
+             shadow-lg hover:bg-white/80 transition"
+>
+  →
+</button>
+
       </div>
 
-      <div className="relative w-full max-w-7xl px-6 md:px-20">
-        <button
-          onClick={prev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur transition hidden md:inline-flex"
-        >
-          ←
-        </button>
-
-        <div className="relative w-full flex justify-center">
-          <div className="w-full">
-            <div className="relative w-full min-h-[589px] overflow-hidden">
-              <AnimatePresence initial={false} custom={direction}>
-                <motion.div
-                  key={index}
-                  custom={direction}
-                  variants={SlideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.45, ease: "easeOut" }}
-                  className="absolute inset-0 flex flex-col md:flex-row items-center gap-10 md:gap-12"
-                >
-                  <img
-                    src={testimonials[index].image}
-                    alt={testimonials[index].name}
-                    className="w-[624px] h-[589px] object-cover rounded-2xl shadow-lg"
-                  />
-
-                  <div className="flex-1 mt-8 md:mt-0 max-w-[624px]">
-                    <img src={Logo} alt="Kutlerri" className="h-7 mb-6" />
-
-                    <blockquote className="font-inter font-medium text-4xl leading-[120%] tracking-[-1.5px] max-w-[624px]">
-                      “{testimonials[index].text}”
-                    </blockquote>
-
-                    <p className="mt-6 font-semibold text-lg max-w-[624px]">
-                      {testimonials[index].name}
-                    </p>
-                    <p className="text-gray-400 text-sm mt-1 max-w-[624px]">
-                      {testimonials[index].role}
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
-
-        <button
-          onClick={next}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur transition hidden md:inline-flex"
-        >
-          →
-        </button>
-
-        <div className="flex items-center justify-center gap-6 mt-8 md:hidden">
+      {/* Pagination Dots */}
+      <div className="flex gap-3 mt-10">
+        {testimonials.map((_, i) => (
           <button
-            onClick={prev}
-            className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full"
-          >
-            ←
-          </button>
-          <button
-            onClick={next}
-            className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full"
-          >
-            →
-          </button>
-        </div>
-
-        <div className="flex items-center justify-center gap-3 mt-8">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setDirection(i > index ? 1 : -1);
-                setIndex(i);
-              }}
-              className={`w-3 h-3 rounded-full transition ${
-                i === index ? "bg-white" : "bg-white/30"
-              }`}
-            />
-          ))}
-        </div>
+            key={i}
+            onClick={() => {
+              setDirection(i > index ? 1 : -1);
+              setIndex(i);
+            }}
+            className={`w-3 h-3 rounded-full transition ${
+              i === index ? "bg-white" : "bg-white/40"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
