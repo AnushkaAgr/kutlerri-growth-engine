@@ -6,8 +6,7 @@ import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import HeroImage from "../assets/Images/HeroSectionImage.png"
-import Services from "../assets/Images/Services.png"
-
+import Services from "../assets/Images/Frame 427321889.png"
 import React, { useEffect } from "react";
 import TestimonialSection from "@/components/TestimonialSection";  
 
@@ -368,20 +367,55 @@ const Home = () => {
 {/* SERVICES */}
 <div className="-mt-[100px] w-full h-[750px] relative overflow-hidden">
 
- 
-  <img
-    src={Services}
-    alt="Services"
-    className="
-      absolute inset-0     
-      w-full h-full
-      object-cover           
-      object-center
-      m-0 p-0               
-      z-0
-    "
-  />
+  {/* Background Image (Zoomed Out) */}
+ <img
+  src={Services}
+  alt="Services"
+  className="
+    absolute inset-0
+    w-full h-full
+    object-cover
+    object-center
+    m-0 p-0
+    z-0
+    scale-100   /* ensure no zoom out */
+  "
+/>
 
+  {/* LEFT CONTENT */}
+  <div className="absolute left-[80px] top-[250px] z-20 text-white max-w-[639px]">
+    <h1 className="font-garnett text-[84.46px] leading-[110%] font-light">
+      Fully Managed <br /> Services
+    </h1>
+
+    <p className="font-gotham text-[24px] mt-9 leading-[150%] text-white-500">
+      Kutlerri is more than a platform.  
+      We become an extension of your team.
+    </p>
+  </div>
+
+  {/* RIGHT CONTENT */}
+  <div className="absolute right-[120px] top-[230px] z-20 text-white flex flex-col gap-10">
+
+    {/* Item 1 */}
+    <div className="flex items-start gap-4">
+      <img src={Spoon} alt="" className="w-[21px] h-[70px]" />
+      <p className="text-[34.42px] font-garnett leading-tight">
+        Restaurant <br /> Intelligence
+      </p>
+    </div>
+
+    {/* Item 2 */}
+    <div className="flex items-center gap-4">
+  <img src={Knife} alt="" className="w-[10px] h-[70px]" />
+  
+  <p className="text-[34.42px] font-garnett leading-tight">
+    B2B Catering <br /> Lead Generation
+  </p>
+</div>
+
+
+  </div>
 </div>
 
 
