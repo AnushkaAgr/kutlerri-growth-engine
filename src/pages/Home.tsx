@@ -298,8 +298,8 @@ const Home = () => {
         mb-10
       "
     >
-      CaterReach-
-      <span className="text-[#9F7CEF]">Your Catering Revenue Engine</span>
+      CaterReach -
+      <span className="text-[#9F7CEF]"> Your Catering Revenue Engine</span>
     </h2>
 
     {/* LOTTIE ANIMATION */}

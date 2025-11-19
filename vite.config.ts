@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-     base: "/kutletrri-website/",
+     base: "/kutletrri-growth-engine/",
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
