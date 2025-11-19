@@ -382,7 +382,7 @@ a.goToAndStop(at-a.firstFrame-1,!0)}lt.type==="loop"&&(_e===null||_e!==lt.frames
         text-black\r
         whitespace-nowrap\r
         mb-10\r
-      `,children:["CaterReach-",jsxRuntimeExports.jsx("span",{className:"text-[#9F7CEF]",children:"Your Catering Revenue Engine"})]}),jsxRuntimeExports.jsx("div",{className:`\r
+      `,children:["CaterReach -",jsxRuntimeExports.jsx("span",{className:"text-[#9F7CEF]",children:" Your Catering Revenue Engine"})]}),jsxRuntimeExports.jsx("div",{className:`\r
         w-[883px]\r
         h-[514px]\r
         flex justify-center items-center\r
