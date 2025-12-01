@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../assets/Images/Logo/LogoDark.png";
 
 import Solution1 from "../assets/Images/NavBar/Asset 1.png";
@@ -9,19 +10,18 @@ import Solution3 from "../assets/Images/NavBar/Assset 3.png";
 import Solution4 from "../assets/Images/NavBar/Asset 4.png";
 import Solution5 from "../assets/Images/NavBar/Asset 5.png";
 
-import { motion } from "framer-motion";
-
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   const [openSolutions, setOpenSolutions] = useState(false);
   const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
 
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+
   const isActive = (path: string) => location.pathname === path;
 
-  /* Scroll Listener */
+  // Handle scroll to change navbar color
   useEffect(() => {
     const heroSection = document.getElementById("hero-section");
     const heroHeight = heroSection ? heroSection.offsetHeight : 500;
@@ -29,11 +29,22 @@ const Navigation = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > heroHeight - 80);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* Solutions Items */
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpenSolutions(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const SOLUTIONS_ITEMS = [
     {
       img: Solution1,
@@ -69,7 +80,7 @@ const Navigation = () => {
         className={`fixed top-0 left-0 w-full h-[82px]
           flex items-center justify-between
           px-4 sm:px-8 md:px-[40px] lg:px-[53px]
-          transition-all duration-300 z-50
+          transition-all duration-300 z-[1000]
           ${scrolled ? "bg-white shadow-sm" : "bg-[#E5D9FF]"}
         `}
       >
@@ -80,66 +91,22 @@ const Navigation = () => {
 
         {/* DESKTOP MENU */}
         <ul className="hidden lg:flex items-center gap-[50px] font-garnett font-semibold text-[18px]">
-
-          {/* SOLUTIONS BLOCK */}
-          <li
-            className="relative"
-            onMouseEnter={() => setOpenSolutions(true)}
-            onMouseLeave={() => setOpenSolutions(false)}
-          >
-            {/* HOVERABLE AREA (covers navbar height) */}
-            <div className="absolute top-full left-1/2 -translate-x-1/2 w-[160px] h-[40px]"></div>
-
+          {/* SOLUTIONS BUTTON */}
+          <li>
             <button
-              className={`
-                cursor-pointer transition
-                ${openSolutions ? "text-[#7138F5]" : "text-black hover:text-[#7138F5]"}
-              `}
+              onClick={() => setOpenSolutions((prev) => !prev)}
+              className={`flex items-center gap-1 cursor-pointer transition-none ${
+                openSolutions ? "text-[#7138F5]" : "text-black"
+              }`}
             >
               Solutions
+              <ChevronDown
+                size={18}
+                className={`transition-transform duration-300 ${
+                  openSolutions ? "rotate-180" : "rotate-0"
+                }`}
+              />
             </button>
-
-            {/* DROPDOWN */}
-            {openSolutions && (
-              <div
-                className={`
-                  absolute left-1/2 -translate-x-[610px] top-full mt-4
-                  w-screen backdrop-blur-xl
-                  bg-[rgba(255,255,255,0.55)]
-                  border-t-2 border-[rgba(113,56,245,0.25)]
-                  shadow-[0_8px_30px_rgba(0,0,0,0.08)]
-                  rounded-b-2xl
-                  transition-all duration-300
-                  z-[999]
-                `}
-              >
-                <div className="max-w-7xl mx-auto grid grid-cols-5 divide-x divide-gray-300/40 w-full">
-                  {SOLUTIONS_ITEMS.map((item, index) => (
-                    <div
-                      key={index}
-                      className="
-                        px-8 py-8
-                        flex flex-col items-center
-                        hover:bg-[rgba(113,56,245,0.10)]
-                        transition-all duration-300
-                        cursor-pointer
-                      "
-                    >
-                      <img src={item.img} className="w-[44px] h-[44px] mb-3" />
-
-                      <div className="w-full max-w-[200px] text-center">
-                        <h3 className="font-garnett text-[18px] font-semibold mb-2 hover:underline">
-                          {item.title}
-                        </h3>
-                        <p className="font-gotham text-[14px] text-gray-600 leading-[130%]">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </li>
 
           {/* OTHER LINKS */}
@@ -188,6 +155,79 @@ const Navigation = () => {
         </button>
       </nav>
 
+      {/* FULL-WIDTH DROPDOWN */}
+      <AnimatePresence>
+        {openSolutions && (
+          <motion.div
+            ref={dropdownRef}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="
+              fixed top-[82px] left-0 w-screen
+              bg-white border-t-2 border-[#E4D7FF]
+              shadow-[0_8px_40px_rgba(0,0,0,0.08)]
+              rounded-b-[30px] overflow-hidden
+              z-[999]
+            "
+          >
+            <div
+              className="
+                max-w-[1600px] mx-auto px-8
+                grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5
+                divide-y sm:divide-y-0 sm:divide-x divide-gray-200
+                w-full
+              "
+            >
+              {SOLUTIONS_ITEMS.map((item, index) => (
+                <div
+                  key={index}
+                  className="
+                    px-6 py-10
+                    flex flex-col items-center justify-start
+                    cursor-pointer text-center
+                  "
+                >
+                  <div
+                    className="
+                      w-[60px] h-[60px] flex items-center justify-center
+                      rounded-2xl bg-[#F6F0FF]
+                      shadow-sm mb-4
+                    "
+                  >
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="w-[36px] h-[36px]"
+                    />
+                  </div>
+
+                  <div className="max-w-[220px]">
+                    <h3
+                      className="
+                        font-garnett text-[17px] md:text-[18px]
+                        font-semibold mb-2 text-[#1A1A1A]
+                      "
+                    >
+                      {item.title}
+                    </h3>
+                    <p
+                      className="
+                        font-gotham text-[14px] md:text-[15px]
+                        text-gray-600 leading-[130%]
+                      "
+                    >
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* MOBILE MENU */}
       <div
         className={`
@@ -198,7 +238,7 @@ const Navigation = () => {
         `}
       >
         <ul className="flex flex-col py-6 px-6 text-lg font-medium">
-          {/* MOBILE SOLUTIONS DROPDOWN */}
+          {/* MOBILE SOLUTIONS */}
           <li
             className="flex justify-between items-center py-3 cursor-pointer"
             onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
@@ -206,9 +246,7 @@ const Navigation = () => {
             <span className="text-black font-garnett">Solutions</span>
             <ChevronDown
               size={22}
-              className={`transition ${
-                mobileSolutionsOpen ? "rotate-180" : ""
-              }`}
+              className={`transition ${mobileSolutionsOpen ? "rotate-180" : ""}`}
             />
           </li>
 
@@ -234,7 +272,8 @@ const Navigation = () => {
 
           <li className="py-3">
             <Link to="/company" className="text-black font-garnett">
-              Company</Link>
+              Company
+            </Link>
           </li>
 
           <li className="pt-6">

@@ -1,7 +1,7 @@
 import Lenis from "@studio-freight/lenis";
 import { StackCard, CardData } from "@/components/StackCard";
-import card1 from "../assets/Images/Card1.png";
-import card2 from "../assets/Images/Card2.png";
+import card1 from "../assets/Images/RestroBrain_kutlerri.png";
+import card2 from "../assets/Images/CaterReach_kutlerri.png";
 import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
@@ -9,9 +9,9 @@ import HeroImage from "../assets/Images/HeroSectionImage.png"
 import Services from "../assets/Images/Frame 427321889.png"
 import React, { useEffect } from "react";
 import TestimonialSection from "@/components/TestimonialSection";  
-
-import restrobrainData from "../assets/data/Frame-427321905.json";
-import caterreachData from "../assets/data/Frame-427321953 (2).json";
+import restrobrainData from "../assets/data/RestroBrain.json";
+import caterreachData from "../assets/data/CaterReach (2).json";
+import fullyManagedServices from "../assets/data/managedService.json";
 import Lottie from "lottie-react";
 import Fork from "../assets/Images/Elements/Fork.png"
 import Spoon from "../assets/Images/Elements/Spoon.png"
@@ -84,27 +84,34 @@ const Home = () => {
   id="hero-section"
   className="
     w-full
-    min-h-[900px]
+    min-h-screen
     bg-[#E5D9FF]
-    pt-32 md:pt-35
-    px-6 md:px-16 lg:px-24
-    flex
+    pt-24 md:pt-32 lg:pt-36
+    px-6 sm:px-10 md:px-16 lg:px-24
+    flex flex-col lg:flex-row
     items-center
     justify-between
     relative
     overflow-hidden
   "
 >
-
   {/* LEFT CONTENT */}
-  <div className="flex flex-col items-start max-w-[600px] z-10 -ml-4 md:-ml-10 lg:-ml-9.5">
-
+  <div
+    className="
+      flex flex-col
+      items-start
+      z-10
+      max-w-full sm:max-w-[600px]
+      text-center lg:text-left
+      lg:-ml-6
+    "
+  >
     <h1
       className="
         font-garnett font-normal
-        text-[64px] md:text-[96px]
-        leading-[107%]
-        tracking-[-2px]
+        text-[40px] sm:text-[56px] md:text-[72px] lg:text-[96px]
+        leading-[110%]
+        tracking-tight
         text-black
       "
     >
@@ -114,25 +121,34 @@ const Home = () => {
     <p
       className="
         font-gotham font-light
-        text-[20px] md:text-[24px]
-        leading-[120%]
+        text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px]
+        leading-relaxed
         text-black
-        mt-6
+        mt-4 sm:mt-6
       "
     >
-      Boosts sales, improves margins, cuts prime costs, and brings steady B2B catering leads, all in one platform.
+      Boosts sales, improves margins, cuts prime costs, and brings steady B2B
+      catering leads — all in one platform.
     </p>
 
     {/* BUTTONS */}
-    <div className="mt-10 flex gap-4">
+    <div
+      className="
+        mt-8 sm:mt-10
+        flex flex-col sm:flex-row
+        gap-4 sm:gap-5
+        w-full sm:w-auto
+        justify-center lg:justify-start
+      "
+    >
       <button
         className="
-          w-[225px] h-[42px]
+          w-full sm:w-[225px] h-[42px]
           rounded-full
           border border-black
           font-gotham font-medium
           hover:bg-black hover:text-white
-          transition
+          transition-all duration-300
         "
       >
         Discover Kutlerri
@@ -140,13 +156,13 @@ const Home = () => {
 
       <button
         className="
-          w-[197px] h-[42px]
+          w-full sm:w-[197px] h-[42px]
           rounded-full
           bg-[#7138F5]
           text-white
           font-gotham font-medium
           hover:bg-black
-          transition
+          transition-all duration-300
         "
       >
         Get a Demo
@@ -154,40 +170,55 @@ const Home = () => {
     </div>
   </div>
 
-  <div className="absolute right-0 top-0 h-full flex items-end pointer-events-none">
+  {/* RIGHT IMAGE */}
+  <div
+    className="
+      mt-10 lg:mt-0
+      w-full lg:w-auto
+      flex justify-center lg:justify-end
+      relative
+    "
+  >
     <img
       src={HeroImage}
-      alt=""
+      alt="Kutlerri Platform"
       className="
-        h-[80%]
-        md:h-[95%]
-        lg:h-[95%]
+        w-[85%] sm:w-[70%] md:w-[60%] lg:w-auto
+        max-h-[550px] lg:max-h-[750px]
         object-contain
-        max-w-none
+        z-0
       "
     />
   </div>
-
 </section>
 
 
-   <div className="w-full flex justify-center px-6 md:px-20 mt-10">
+
+ <div
+  className="
+    w-full
+    flex
+    justify-center
+    px-6 sm:px-10 md:px-20
+    mt-10 md:mt-16
+    text-center md:text-left
+  "
+>
   <h1
     className="
-      font-garnett
-      font-normal
-      text-[62px] md:text-[96px]
-      leading-[120%]
-      tracking-[-2px]
+      font-garnett font-normal
+      text-[40px] sm:text-[56px] md:text-[80px] lg:text-[96px]
+      leading-[110%]
+      tracking-tight
       text-black
       break-words
       max-w-[1000px]
-      text-left
     "
   >
     Track. Predict. Profit.
   </h1>
 </div>
+
 
 
       {/* STACKING CARDS */}
@@ -203,231 +234,523 @@ const Home = () => {
       </div>
      
 {/* RESTROBRAIN SECTION */}
-<section className="w-full bg-white pt-24 pb-40 flex justify-center" id="restrobrain-section">
-  <div className="max-w-[1440px] w-full px-6 md:px-12 flex flex-col items-center">
+<section
+  id="restrobrain-section"
+  className="w-full bg-white pt-20 md:pt-24 pb-24 md:pb-40 flex justify-center"
+>
+  <div className="max-w-[1440px] w-full px-6 sm:px-10 md:px-12 flex flex-col items-center text-center md:text-left">
 
-    {/* HEADING — SINGLE LINE ALWAYS */}
+    {/* HEADING */}
     <h2
       className="
         font-garnett font-normal
-        text-[44px] md:text-[56px]
-        leading-[100%]
-        tracking-[-3%]
+        text-[32px] sm:text-[40px] md:text-[56px]
+        leading-tight
+        tracking-tight
         text-black
-        whitespace-nowrap
-        mb-20
+        mb-1 md:mb-10
+        text-center
       "
     >
-      RestroBrain – 
+      RestroBrain –
       <span className="text-[#9F7CEF]"> Your Restaurant Intelligence Layer</span>
     </h2>
 
-    {/* LOTTIE ANIMATION */}
+    {/* LOTTIE ANIMATION (FULL WIDTH + TALL HEIGHT) */}
     <div
       className="
-        w-[883px]
-        h-[514px]
+        w-full
+        max-w-[1200px]
+        h-[100vh] sm:h-[110vh] md:h-[120vh]
         flex justify-center items-center
-        overflow-hidden
-        rounded-xl
+        overflow-visible
+        rounded-3xl
+        mx-auto
+        bg-gradient-to-tr from-[#EEE6FF] to-[#C1A6FF]
+        shadow-xl
       "
     >
-      <div className="scale-[1.15]">
-        <Lottie animationData={restrobrainData} loop autoplay />
+      <div
+        className="
+          scale-[1.05] sm:scale-[1.1] md:scale-[1.2]
+          w-full max-w-[1400px]
+          flex justify-center items-center
+        "
+      >
+        <Lottie
+          animationData={restrobrainData}
+          loop
+          autoplay
+          style={{ width: "100%", height: "100%" }}
+        />
       </div>
     </div>
 
     {/* INFO BLOCKS */}
     <div
       className="
-        w-[1098px]
-        h-[112px]
-        flex justify-between items-center
-        mt-10
+        w-full max-w-[1100px]
+        grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+        gap-10 md:gap-12
+        mt-0 md:mt-10
       "
     >
-
-      {/* BLOCK 1 */}
-      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
-        <div className="w-[40px] h-[72px] flex items-center">
-          <img src={Fork} alt="fork" className="h-full object-contain" />
+      {/* BLOCK 1 — FORK */}
+      <div className="flex items-center gap-4 md:gap-5 text-left group">
+        <div
+          className="
+            flex-shrink-0
+            h-auto
+            max-h-[80px] md:max-h-[90px]
+            flex items-center justify-center
+          "
+        >
+          <img
+            src={Fork}
+            alt="fork"
+            className="
+              h-[80%] md:h-[85%]
+              w-auto
+              object-contain
+              transition-transform duration-300 ease-in-out
+              group-hover:scale-105
+            "
+          />
         </div>
-        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
           See all your data in one place and fix margin leaks before they grow.
         </p>
       </div>
 
-      {/* BLOCK 2 */}
-      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
-        <div className="w-[40px] h-[72px] flex items-center">
-          <img src={Spoon} alt="spoon" className="h-[91px] object-contain" />
+      {/* BLOCK 2 — SPOON */}
+      <div className="flex items-center gap-4 md:gap-5 text-left group">
+        <div
+          className="
+            flex-shrink-0
+            h-auto
+            max-h-[70px] md:max-h-[80px]
+            flex items-center justify-center
+          "
+        >
+          <img
+            src={Spoon}
+            alt="spoon"
+            className="
+              h-[75%] md:h-[80%]
+              w-auto
+              object-contain
+              transition-transform duration-300 ease-in-out
+              group-hover:scale-105
+            "
+          />
         </div>
-        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
           Get clear insights on sales, inventory, and menu performance to reduce prime costs.
         </p>
       </div>
 
-      {/* BLOCK 3 */}
-      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
-        <div className="w-[40px] h-[72px] flex items-center">
-          <img src={Knife} alt="knife" className="h-full object-contain" />
+      {/* BLOCK 3 — KNIFE */}
+      <div className="flex items-center gap-4 md:gap-5 text-left group">
+        <div
+          className="
+            flex-shrink-0
+            h-auto
+            max-h-[80px] md:max-h-[90px]
+            flex items-center justify-center
+          "
+        >
+          <img
+            src={Knife}
+            alt="knife"
+            className="
+              h-[80%] md:h-[85%]
+              w-auto
+              object-contain
+              transition-transform duration-300 ease-in-out
+              group-hover:scale-105
+            "
+          />
         </div>
-        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
-          Predict demand and plan smarter to avoid stock outs, wastage, and lost revenue.
+        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
+          Predict demand and plan smarter to avoid stockouts, wastage, and lost revenue.
         </p>
       </div>
-
     </div>
-
   </div>
-      </section>
-      
-      {/* CaterReach*/}
-      <section className="w-full bg-white pt-20 pb-40 flex justify-center" id="caterreach-section">
-  <div className="max-w-[1440px] w-full px-6 md:px-12 flex flex-col items-center">
+</section>
 
-    
+
+
+
+
+      
+ {/* CATERREACH SECTION */}
+<section
+  id="caterreach-section"
+  className="w-full bg-white pt-20 md:pt-24 pb-24 md:pb-40 flex justify-center"
+>
+  <div className="max-w-[1440px] w-full px-6 sm:px-10 md:px-12 flex flex-col items-center text-center md:text-left">
+
+    {/* HEADING */}
     <h2
       className="
         font-garnett font-normal
-        text-[44px] md:text-[56px]
-        leading-[100%]
-        tracking-[-3%]
+        text-[32px] sm:text-[40px] md:text-[56px]
+        leading-tight
+        tracking-tight
         text-black
-        whitespace-nowrap
-        mb-10
+        mb-0 md:mb-0
+        text-center
       "
     >
-      CaterReach -
+      CaterReach –
       <span className="text-[#9F7CEF]"> Your Catering Revenue Engine</span>
     </h2>
 
-    {/* LOTTIE ANIMATION */}
+    {/* LOTTIE ANIMATION (FULL WIDTH + TALL HEIGHT) */}
     <div
       className="
-        w-[883px]
-        h-[514px]
+        w-full
+        max-w-[1200px]
+        h-[100vh] sm:h-[110vh] md:h-[120vh]
         flex justify-center items-center
-        overflow-hidden
-        rounded-xl
+        overflow-visible
+        mx-auto
+        bg-white
+        
       "
     >
-      <div className="scale-[1.15]">
-        <Lottie animationData={caterreachData} loop autoplay />
+      <div
+        className="
+          scale-[1.05] sm:scale-[1.1] md:scale-[1.2]
+          w-full max-w-[1400px]
+          flex justify-center items-center
+        "
+      >
+        <Lottie
+          animationData={caterreachData}
+          loop
+          autoplay
+          style={{ width: "100%", height: "100%" }}
+        />
       </div>
     </div>
 
     {/* INFO BLOCKS */}
     <div
       className="
-        w-[1098px]
-        h-[112px]
-        flex justify-between items-center
-        mt-8
+        w-full max-w-[1100px]
+        grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+        gap-10 md:gap-12
+        mt-0 md:mt-10
       "
     >
-
-      {/* BLOCK 1 */}
-      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
-        <div className="w-[40px] h-[72px] flex items-center">
-          <img src={Fork} alt="fork" className="h-full object-contain" />
+      {/* BLOCK 1 — FORK */}
+      <div className="flex items-center gap-4 md:gap-5 text-left group">
+        <div
+          className="
+            flex-shrink-0
+            h-auto
+            max-h-[80px] md:max-h-[90px]
+            flex items-center justify-center
+          "
+        >
+          <img
+            src={Fork}
+            alt="fork"
+            className="
+              h-[80%] md:h-[85%]
+              w-auto
+              object-contain
+              transition-transform duration-300 ease-in-out
+              group-hover:scale-105
+            "
+          />
         </div>
-        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
           Get verified B2B catering leads that match your capacity and cuisine.
         </p>
       </div>
 
-      {/* BLOCK 2 */}
-      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
-        <div className="w-[40px] h-[72px] flex items-center">
-          <img src={Spoon} alt="spoon" className="h-[91px] object-contain" />
+      {/* BLOCK 2 — SPOON */}
+      <div className="flex items-center gap-4 md:gap-5 text-left group">
+        <div
+          className="
+            flex-shrink-0
+            h-auto
+            max-h-[70px] md:max-h-[80px]
+            flex items-center justify-center
+          "
+        >
+          <img
+            src={Spoon}
+            alt="spoon"
+            className="
+              h-[75%] md:h-[80%]
+              w-auto
+              object-contain
+              transition-transform duration-300 ease-in-out
+              group-hover:scale-105
+            "
+          />
         </div>
-        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
           Reduce dependency on aggregators by building your own steady bulk order pipeline.
-
         </p>
       </div>
 
-      {/* BLOCK 3 */}
-      <div className="w-[310px] h-[112px] flex items-center gap-[24px]">
-        <div className="w-[40px] h-[72px] flex items-center">
-          <img src={Knife} alt="knife" className="h-full object-contain" />
+      {/* BLOCK 3 — KNIFE */}
+      <div className="flex items-center gap-4 md:gap-5 text-left group">
+        <div
+          className="
+            flex-shrink-0
+            h-auto
+            max-h-[80px] md:max-h-[90px]
+            flex items-center justify-center
+          "
+        >
+          <img
+            src={Knife}
+            alt="knife"
+            className="
+              h-[80%] md:h-[85%]
+              w-auto
+              object-contain
+              transition-transform duration-300 ease-in-out
+              group-hover:scale-105
+            "
+          />
         </div>
-        <p className="text-black font-garnett font-normal text-[18px] leading-[100%] tracking-[-3%]">
+        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
           Close orders faster with pre-qualified leads + communication support.
         </p>
       </div>
-
     </div>
-
   </div>
-      </section>
+</section>
 
+      { /* Fully Managed
+Services*/}    
+<section className="relative w-[calc(100%-2.5rem)] mx-5 flex justify-center items-end bg-gradient-to-r from-[#EEE6FF] to-[#9F7CEF] rounded-[30px] md:rounded-[43px] mt-10 mb-10 overflow-hidden">
+  <div className="max-w-[1440px] w-full flex flex-col md:flex-row items-end justify-between gap-10 md:gap-16 pl-6 pr-0 md:px-10">
 
-{/* SERVICES */}
-<div className="-mt-[100px] w-full h-[750px] relative overflow-hidden">
-
-  {/* Background Image (Zoomed Out) */}
- <img
-  src={Services}
-  alt="Services"
-  className="
-    absolute inset-0
-    w-full h-full
-    object-cover
-    object-center
-    m-0 p-0
-    z-0
-    scale-100   /* ensure no zoom out */
-  "
-/>
-
-  {/* LEFT CONTENT */}
-  <div className="absolute left-[80px] top-[250px] z-20 text-white max-w-[639px]">
-    <h1 className="font-garnett text-[84.46px] leading-[110%] font-light">
-      Fully Managed <br /> Services
-    </h1>
-
-    <p className="font-gotham text-[24px] mt-9 leading-[150%] text-white-500">
-      Kutlerri is more than a platform.  
-      We become an extension of your team.
-    </p>
-  </div>
-
-  {/* RIGHT CONTENT */}
-  <div className="absolute right-[120px] top-[230px] z-20 text-white flex flex-col gap-10">
-
-    {/* Item 1 */}
-    <div className="flex items-start gap-4">
-      <img src={Spoon} alt="" className="w-[21px] h-[70px]" />
-      <p className="text-[34.42px] font-garnett leading-tight">
-        Restaurant <br /> Intelligence
+    {/* LEFT TEXT CONTENT */}
+    <div className="flex flex-col text-center md:text-left max-w-[600px] z-20 pt-16 pb-10 md:pb-14 md:pt-20">
+      <h2 className="text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px] font-['Garnett'] font-normal leading-[110%] tracking-[-0.6px] text-black">
+        Fully Managed <br className="hidden md:block" /> Services
+      </h2>
+      <p className="text-[15px] sm:text-[17px] md:text-[20px] mt-4 text-black/70">
+        Kutlerri is more than a platform. We become an extension of your team.
       </p>
     </div>
 
-    {/* Item 2 */}
-    <div className="flex items-center gap-4">
-  <img src={Knife} alt="" className="w-[10px] h-[70px]" />
-  
-  <p className="text-[34.42px] font-garnett leading-tight">
-    B2B Catering <br /> Lead Generation
-  </p>
-</div>
-
+    {/* RIGHT SIDE — JSON ANIMATION */}
+    <div className="absolute bottom-0 right-0 w-full md:w-[60%] lg:w-[55%] flex justify-end items-end">
+      <div
+        className="
+          w-[100%] sm:w-[500px] md:w-[600px] lg:w-[680px] xl:w-[750px]
+          relative
+        "
+        style={{
+          transformOrigin: "bottom right",
+        }}
+      >
+        <Lottie
+          animationData={fullyManagedServices}
+          loop
+          autoplay
+          className="rounded-xl object-contain"
+          style={{
+            display: "block",
+            width: "100%",
+            height: "100%",
+            marginBottom: "0",
+            
+            clipPath:
+              window.innerWidth >= 1024
+                ? "inset(0 30% 0 0)" 
+                : "inset(0 0 0 0)", 
+            transform:
+              window.innerWidth >= 1024
+                ? "scale(1.3) translateX(175px)"
+                : "scale(1) translateX(0px)",
+          }}
+        />
+      </div>
+    </div>
 
   </div>
-</div>
+</section>
 
 
 
 
 
-      {/*Testimonial Section */}
 
-    <section className="relative w-full bg-[#EEE6FF] flex flex-col items-center justify-center text-black mt-0 overflow-hidden ml-0 py-10">
-  <TestimonialSection />
 
-  
+{/* SERVICES */}
+      {/* {<section
+        id="services-section"
+        className="
+    relative
+    w-full
+    min-h-[750px]
+    md:min-h-[850px]
+    flex
+    items-center
+    justify-center
+    overflow-hidden
+    bg-black
+  "
+      >
+      
+        <img
+          src={Services}
+          alt="Services"
+          className="
+      absolute inset-0
+      w-full h-full
+      object-cover
+      object-center
+      m-0 p-0
+      z-0
+    "
+        />
+
+   
+        <div
+          className="
+      absolute inset-0
+      bg-gradient-to-r from-black/60 via-black/40 to-transparent
+      z-10
+    "
+        />
+
+    
+        <div
+          className="
+      relative z-20
+      w-full
+      max-w-[1440px]
+      flex flex-col md:flex-row
+      justify-between
+      items-start
+      px-6 sm:px-10 md:px-16 lg:px-24
+      py-20 md:py-32
+      text-white
+      gap-12 md:gap-0
+    "
+        >
+         
+          <div className="flex-1 max-w-[600px] text-left">
+            <h1
+              className="
+          font-garnett font-light
+          text-[40px] sm:text-[56px] md:text-[72px] lg:text-[84px]
+          leading-[110%]
+          mb-6
+        "
+            >
+              Fully Managed <br /> Services
+            </h1>
+            <p
+              className="
+          font-gotham font-light
+          text-[16px] sm:text-[18px] md:text-[22px] lg:text-[24px]
+          leading-[150%]
+          text-white/90
+          max-w-[500px]
+        "
+            >
+              Kutlerri is more than a platform.
+              We become an extension of your team.
+            </p>
+          </div>
+
+          <div
+            className="
+        flex-1
+        flex flex-col
+        gap-8 sm:gap-10
+        items-start md:items-end
+        md:text-right
+      "
+          >
+           
+            <div className="flex items-start gap-4 sm:gap-6">
+              <img
+                src={Spoon}
+                alt="spoon"
+                className="w-[18px] sm:w-[20px] md:w-[22px] lg:w-[24px] h-auto"
+              />
+              <p
+                className="
+            text-[22px] sm:text-[26px] md:text-[32px] lg:text-[34px]
+            font-garnett
+            leading-tight
+          "
+              >
+                Restaurant <br /> Intelligence
+              </p>
+            </div>
+
+           
+            <div className="flex items-start gap-4 sm:gap-6">
+              <img
+                src={Knife}
+                alt="knife"
+                className="w-[10px] sm:w-[12px] md:w-[14px] lg:w-[16px] h-auto"
+              />
+              <p
+                className="
+            text-[22px] sm:text-[26px] md:text-[32px] lg:text-[34px]
+            font-garnett
+            leading-tight
+          "
+              >
+                B2B Catering <br /> Lead Generation
+              </p>
+            </div>
+          </div>
+        </div>
+      </section> } */}
+
+
+
+
+
+{/* TESTIMONIAL SECTION */}
+<section
+  id="testimonial-section"
+  className="
+    relative
+    w-full
+    bg-[#EEE6FF]
+    flex
+    flex-col
+    items-center
+    justify-center
+    text-black
+    overflow-hidden
+    py-12 sm:py-16 md:py-20
+    px-6 sm:px-10 md:px-16
+  "
+>
+
+  <div
+    className="
+      absolute inset-0
+      bg-gradient-to-b from-[#EEE6FF] via-[#F4EEFF] to-[#EEE6FF]
+      opacity-70
+      pointer-events-none
+      z-0
+    "
+  />
+
+  {/* Main Testimonial Component */}
+  <div className="relative z-10 w-full max-w-[1440px]">
+    <TestimonialSection />
+  </div>
 </section>
 
 
