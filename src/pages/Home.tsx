@@ -6,10 +6,9 @@ import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import HeroImage from "../assets/Images/HeroSectionImage.png"
-import Services from "../assets/Images/Frame 427321889.png"
 import React, { useEffect } from "react";
 import TestimonialSection from "@/components/TestimonialSection";  
-import restrobrainData from "../assets/data/RestroBrain.json";
+import restrobrainData from "../assets/data/RestroBrain11.json";
 import caterreachData from "../assets/data/CaterReach (2).json";
 import fullyManagedServices from "../assets/data/managedService.json";
 import Lottie from "lottie-react";
@@ -128,7 +127,7 @@ const Home = () => {
       "
     >
       Boosts sales, improves margins, cuts prime costs, and brings steady B2B
-      catering leads — all in one platform.
+      catering leads - all in one platform.
     </p>
 
     {/* BUTTONS */}
@@ -213,6 +212,7 @@ const Home = () => {
       text-black
       break-words
       max-w-[1000px]
+      mb-2
     "
   >
     Track. Predict. Profit.
@@ -236,142 +236,65 @@ const Home = () => {
 {/* RESTROBRAIN SECTION */}
 <section
   id="restrobrain-section"
-  className="w-full bg-white pt-20 md:pt-24 pb-24 md:pb-40 flex justify-center"
+  className="w-full bg-white pt-6 sm:pt-10 md:pt-20 pb-6 sm:pb-12 md:pb-28 flex justify-center"
 >
-  <div className="max-w-[1440px] w-full px-6 sm:px-10 md:px-12 flex flex-col items-center text-center md:text-left">
+  <div className="max-w-[1440px] w-full px-4 sm:px-8 md:px-12 flex flex-col items-center text-center md:text-left">
 
     {/* HEADING */}
     <h2
       className="
         font-garnett font-normal
-        text-[32px] sm:text-[40px] md:text-[56px]
-        leading-tight
-        tracking-tight
-        text-black
-        mb-1 md:mb-10
-        text-center
+        text-[24px] sm:text-[34px] md:text-[56px]
+        leading-tight tracking-tight text-black
+        mb-4 sm:mb-8 text-center
       "
     >
-      RestroBrain –
+      RestroBrain – 
       <span className="text-[#9F7CEF]"> Your Restaurant Intelligence Layer</span>
     </h2>
 
-    {/* LOTTIE ANIMATION (FULL WIDTH + TALL HEIGHT) */}
+    {/* LOTTIE ANIMATION */}
     <div
       className="
-        w-full
-        max-w-[1200px]
-        h-[100vh] sm:h-[110vh] md:h-[120vh]
+        w-full max-w-[1000px]
+        h-[35vh] sm:h-[55vh] md:h-[90vh]
         flex justify-center items-center
-        overflow-visible
-        rounded-3xl
-        mx-auto
-        bg-gradient-to-tr from-[#EEE6FF] to-[#C1A6FF]
-        shadow-xl
+        overflow-visible mx-auto
       "
     >
-      <div
-        className="
-          scale-[1.05] sm:scale-[1.1] md:scale-[1.2]
-          w-full max-w-[1400px]
-          flex justify-center items-center
-        "
-      >
-        <Lottie
-          animationData={restrobrainData}
-          loop
-          autoplay
-          style={{ width: "100%", height: "100%" }}
-        />
+      <div className="scale-[0.9] sm:scale-[1.05] md:scale-[1.2] w-full flex justify-center items-center">
+        <Lottie animationData={restrobrainData} loop autoplay style={{ width: "100%", height: "100%" }} />
       </div>
     </div>
 
     {/* INFO BLOCKS */}
     <div
       className="
-        w-full max-w-[1100px]
+        w-full max-w-[1000px]
         grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-        gap-10 md:gap-12
-        mt-0 md:mt-10
+        gap-4 sm:gap-6 md:gap-10 mt-6 sm:mt-10 md:mt-14
       "
     >
-      {/* BLOCK 1 — FORK */}
-      <div className="flex items-center gap-4 md:gap-5 text-left group">
-        <div
-          className="
-            flex-shrink-0
-            h-auto
-            max-h-[80px] md:max-h-[90px]
-            flex items-center justify-center
-          "
-        >
-          <img
-            src={Fork}
-            alt="fork"
-            className="
-              h-[80%] md:h-[85%]
-              w-auto
-              object-contain
-              transition-transform duration-300 ease-in-out
-              group-hover:scale-105
-            "
-          />
-        </div>
-        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
+      {/* BLOCK 1 */}
+      <div className="flex items-center gap-3 sm:gap-4 text-left group">
+        <img src={Fork} alt="fork" className="h-[55px] sm:h-[65px] md:h-[80px] transition-transform duration-300 group-hover:scale-105" />
+        <p className="text-black font-garnett text-[15px] sm:text-[17px] md:text-[18px] leading-snug">
           See all your data in one place and fix margin leaks before they grow.
         </p>
       </div>
 
-      {/* BLOCK 2 — SPOON */}
-      <div className="flex items-center gap-4 md:gap-5 text-left group">
-        <div
-          className="
-            flex-shrink-0
-            h-auto
-            max-h-[70px] md:max-h-[80px]
-            flex items-center justify-center
-          "
-        >
-          <img
-            src={Spoon}
-            alt="spoon"
-            className="
-              h-[75%] md:h-[80%]
-              w-auto
-              object-contain
-              transition-transform duration-300 ease-in-out
-              group-hover:scale-105
-            "
-          />
-        </div>
-        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
+      {/* BLOCK 2 */}
+      <div className="flex items-center gap-3 sm:gap-4 text-left group">
+        <img src={Spoon} alt="spoon" className="h-[50px] sm:h-[60px] md:h-[75px] transition-transform duration-300 group-hover:scale-105" />
+        <p className="text-black font-garnett text-[15px] sm:text-[17px] md:text-[18px] leading-snug">
           Get clear insights on sales, inventory, and menu performance to reduce prime costs.
         </p>
       </div>
 
-      {/* BLOCK 3 — KNIFE */}
-      <div className="flex items-center gap-4 md:gap-5 text-left group">
-        <div
-          className="
-            flex-shrink-0
-            h-auto
-            max-h-[80px] md:max-h-[90px]
-            flex items-center justify-center
-          "
-        >
-          <img
-            src={Knife}
-            alt="knife"
-            className="
-              h-[80%] md:h-[85%]
-              w-auto
-              object-contain
-              transition-transform duration-300 ease-in-out
-              group-hover:scale-105
-            "
-          />
-        </div>
-        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
+      {/* BLOCK 3 */}
+      <div className="flex items-center gap-3 sm:gap-4 text-left group">
+        <img src={Knife} alt="knife" className="h-[55px] sm:h-[65px] md:h-[80px] transition-transform duration-300 group-hover:scale-105" />
+        <p className="text-black font-garnett text-[15px] sm:text-[17px] md:text-[18px] leading-snug">
           Predict demand and plan smarter to avoid stockouts, wastage, and lost revenue.
         </p>
       </div>
@@ -379,155 +302,76 @@ const Home = () => {
   </div>
 </section>
 
-
-
-
-
-      
- {/* CATERREACH SECTION */}
+{/* CATERREACH SECTION */}
 <section
   id="caterreach-section"
-  className="w-full bg-white pt-20 md:pt-24 pb-24 md:pb-40 flex justify-center"
+  className="w-full bg-white pt-6 sm:pt-10 md:pt-20 pb-6 sm:pb-12 md:pb-28 flex justify-center"
 >
-  <div className="max-w-[1440px] w-full px-6 sm:px-10 md:px-12 flex flex-col items-center text-center md:text-left">
+  <div className="max-w-[1440px] w-full px-4 sm:px-8 md:px-12 flex flex-col items-center text-center md:text-left">
 
     {/* HEADING */}
     <h2
       className="
         font-garnett font-normal
-        text-[32px] sm:text-[40px] md:text-[56px]
-        leading-tight
-        tracking-tight
-        text-black
-        mb-0 md:mb-0
-        text-center
+        text-[24px] sm:text-[34px] md:text-[56px]
+        leading-tight tracking-tight text-black
+        mb-4 sm:mb-8 text-center
       "
     >
-      CaterReach –
+      CaterReach – 
       <span className="text-[#9F7CEF]"> Your Catering Revenue Engine</span>
     </h2>
 
-    {/* LOTTIE ANIMATION (FULL WIDTH + TALL HEIGHT) */}
+    {/* LOTTIE ANIMATION */}
     <div
       className="
-        w-full
-        max-w-[1200px]
-        h-[100vh] sm:h-[110vh] md:h-[120vh]
+        w-full max-w-[1000px]
+        h-[35vh] sm:h-[55vh] md:h-[90vh]
         flex justify-center items-center
-        overflow-visible
-        mx-auto
-        bg-white
-        
+        overflow-visible mx-auto
       "
     >
-      <div
-        className="
-          scale-[1.05] sm:scale-[1.1] md:scale-[1.2]
-          w-full max-w-[1400px]
-          flex justify-center items-center
-        "
-      >
-        <Lottie
-          animationData={caterreachData}
-          loop
-          autoplay
-          style={{ width: "100%", height: "100%" }}
-        />
+      <div className="scale-[0.9] sm:scale-[1.05] md:scale-[1.2] w-full flex justify-center items-center">
+        <Lottie animationData={caterreachData} loop autoplay style={{ width: '100%', height: '100%' }} />
       </div>
     </div>
 
     {/* INFO BLOCKS */}
     <div
       className="
-        w-full max-w-[1100px]
+        w-full max-w-[1000px]
         grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-        gap-10 md:gap-12
-        mt-0 md:mt-10
+        gap-4 sm:gap-6 md:gap-10 mt-6 sm:mt-10 md:mt-14
       "
     >
-      {/* BLOCK 1 — FORK */}
-      <div className="flex items-center gap-4 md:gap-5 text-left group">
-        <div
-          className="
-            flex-shrink-0
-            h-auto
-            max-h-[80px] md:max-h-[90px]
-            flex items-center justify-center
-          "
-        >
-          <img
-            src={Fork}
-            alt="fork"
-            className="
-              h-[80%] md:h-[85%]
-              w-auto
-              object-contain
-              transition-transform duration-300 ease-in-out
-              group-hover:scale-105
-            "
-          />
-        </div>
-        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
+      {/* BLOCK 1 */}
+      <div className="flex items-center gap-3 sm:gap-4 text-left group">
+        <img src={Fork} alt="fork" className="h-[55px] sm:h-[65px] md:h-[80px] transition-transform duration-300 group-hover:scale-105" />
+        <p className="text-black font-garnett text-[15px] sm:text-[17px] md:text-[18px] leading-snug">
           Get verified B2B catering leads that match your capacity and cuisine.
         </p>
       </div>
 
-      {/* BLOCK 2 — SPOON */}
-      <div className="flex items-center gap-4 md:gap-5 text-left group">
-        <div
-          className="
-            flex-shrink-0
-            h-auto
-            max-h-[70px] md:max-h-[80px]
-            flex items-center justify-center
-          "
-        >
-          <img
-            src={Spoon}
-            alt="spoon"
-            className="
-              h-[75%] md:h-[80%]
-              w-auto
-              object-contain
-              transition-transform duration-300 ease-in-out
-              group-hover:scale-105
-            "
-          />
-        </div>
-        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
+      {/* BLOCK 2 */}
+      <div className="flex items-center gap-3 sm:gap-4 text-left group">
+        <img src={Spoon} alt="spoon" className="h-[50px] sm:h-[60px] md:h-[75px] transition-transform duration-300 group-hover:scale-105" />
+        <p className="text-black font-garnett text-[15px] sm:text-[17px] md:text-[18px] leading-snug">
           Reduce dependency on aggregators by building your own steady bulk order pipeline.
         </p>
       </div>
 
-      {/* BLOCK 3 — KNIFE */}
-      <div className="flex items-center gap-4 md:gap-5 text-left group">
-        <div
-          className="
-            flex-shrink-0
-            h-auto
-            max-h-[80px] md:max-h-[90px]
-            flex items-center justify-center
-          "
-        >
-          <img
-            src={Knife}
-            alt="knife"
-            className="
-              h-[80%] md:h-[85%]
-              w-auto
-              object-contain
-              transition-transform duration-300 ease-in-out
-              group-hover:scale-105
-            "
-          />
-        </div>
-        <p className="text-black font-garnett font-normal text-[16px] sm:text-[18px] leading-snug tracking-tight">
+      {/* BLOCK 3 */}
+      <div className="flex items-center gap-3 sm:gap-4 text-left group">
+        <img src={Knife} alt="knife" className="h-[55px] sm:h-[65px] md:h-[80px] transition-transform duration-300 group-hover:scale-105" />
+        <p className="text-black font-garnett text-[15px] sm:text-[17px] md:text-[18px] leading-snug">
           Close orders faster with pre-qualified leads + communication support.
         </p>
       </div>
     </div>
   </div>
 </section>
+
+
 
       { /* Fully Managed
 Services*/}    
