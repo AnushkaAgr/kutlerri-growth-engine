@@ -331,21 +331,20 @@ const Home = () => {
 
 
 
-
 {/* CATERREACH SECTION */}
 <section
   id="caterreach-section"
-  className="w-full bg-white pt-6 sm:pt-10 md:pt-20 pb-6 sm:pb-12 md:pb-28 flex justify-center"
+  className="w-full bg-white pt-6 sm:pt-10 md:pt-20 pb-6 sm:pb-12 md:pb-24 flex justify-center"
 >
-  <div className="max-w-[1440px] w-full px-4 sm:px-8 md:px-12 flex flex-col items-center text-center md:text-left">
+  <div className="w-full px-8 flex flex-col items-center text-center md:text-left">
 
     {/* HEADING */}
     <h2
       className="
         font-garnett font-normal
-        text-[24px] sm:text-[34px] md:text-[56px]
+        text-[22px] sm:text-[30px] md:text-[48px] xl:text-[56px]
         leading-tight tracking-tight text-black
-        mb-4 sm:mb-8 text-center
+        mb-8 sm:mb-10 md:mb-14 text-center
       "
     >
       CaterReach – 
@@ -355,51 +354,79 @@ const Home = () => {
     {/* LOTTIE ANIMATION */}
     <div
       className="
-        w-full max-w-[1000px]
-        h-[35vh] sm:h-[55vh] md:h-[90vh]
+        w-full
+        max-w-[900px] sm:max-w-[1000px] md:max-w-[1100px] lg:max-w-[1200px]
+        xl:max-w-[1300px] 2xl:max-w-[1400px]
+        h-[28vh] sm:h-[40vh] md:h-[55vh] lg:h-[60vh] xl:h-[65vh] 2xl:h-[70vh]
         flex justify-center items-center
         overflow-visible mx-auto
+        mb-10 sm:mb-12 md:mb-16 lg:mb-20
+        lg:mt-12
       "
     >
-      <div className="scale-[0.9] sm:scale-[1.05] md:scale-[1.2] w-full flex justify-center items-center">
-        <Lottie animationData={caterreachData} loop autoplay style={{ width: '100%', height: '100%' }} />
+      <div
+        className="
+          w-full flex justify-center items-center
+          scale-[0.85] sm:scale-[0.95] md:scale-[1.05] lg:scale-[1.1] xl:scale-[1.15]
+          transition-transform duration-500 ease-out
+        "
+      >
+        <Lottie
+          animationData={caterreachData}
+          loop
+          autoplay
+          style={{ width: '100%', height: '100%' }}
+        />
       </div>
     </div>
 
     {/* INFO BLOCKS */}
     <div
       className="
-        w-full max-w-[1000px]
+        w-full max-w-[1300px]
         grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-        gap-4 sm:gap-6 md:gap-10 mt-6 sm:mt-10 md:mt-14
+        gap-5 sm:gap-6 md:gap-8 mt-8 sm:mt-10 md:mt-12 px-8
       "
     >
       {/* BLOCK 1 */}
       <div className="flex items-center gap-3 sm:gap-4 text-left group">
-        <img src={Fork} alt="fork" className="h-[55px] sm:h-[65px] md:h-[80px] transition-transform duration-300 group-hover:scale-105" />
-        <p className="text-black font-garnett text-[15px] sm:text-[17px] md:text-[18px] leading-snug">
+        <img
+          src={Fork}
+          alt="fork"
+          className="h-[45px] sm:h-[55px] md:h-[65px] xl:h-[75px] transition-transform duration-300 group-hover:scale-105"
+        />
+        <p className="text-black font-garnett text-[14px] sm:text-[16px] md:text-[17px] xl:text-[18px] leading-snug">
           Get verified B2B catering leads that match your capacity and cuisine.
         </p>
       </div>
 
       {/* BLOCK 2 */}
       <div className="flex items-center gap-3 sm:gap-4 text-left group">
-        <img src={Spoon} alt="spoon" className="h-[50px] sm:h-[60px] md:h-[75px] transition-transform duration-300 group-hover:scale-105" />
-        <p className="text-black font-garnett text-[15px] sm:text-[17px] md:text-[18px] leading-snug">
+        <img
+          src={Spoon}
+          alt="spoon"
+          className="h-[42px] sm:h-[52px] md:h-[62px] xl:h-[70px] transition-transform duration-300 group-hover:scale-105"
+        />
+        <p className="text-black font-garnett text-[14px] sm:text-[16px] md:text-[17px] xl:text-[18px] leading-snug">
           Reduce dependency on aggregators by building your own steady bulk order pipeline.
         </p>
       </div>
 
       {/* BLOCK 3 */}
       <div className="flex items-center gap-3 sm:gap-4 text-left group">
-        <img src={Knife} alt="knife" className="h-[55px] sm:h-[65px] md:h-[80px] transition-transform duration-300 group-hover:scale-105" />
-        <p className="text-black font-garnett text-[15px] sm:text-[17px] md:text-[18px] leading-snug">
-          Close orders faster with pre-qualified leads + communication support.
+        <img
+          src={Knife}
+          alt="knife"
+          className="h-[45px] sm:h-[55px] md:h-[65px] xl:h-[75px] transition-transform duration-300 group-hover:scale-105"
+        />
+        <p className="text-black font-garnett text-[14px] sm:text-[16px] md:text-[17px] xl:text-[18px] leading-snug">
+          Close orders faster with pre-qualified leads and communication support.
         </p>
       </div>
     </div>
   </div>
 </section>
+
 
 
 
