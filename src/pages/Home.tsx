@@ -253,19 +253,21 @@ const Home = () => {
       <span className="text-[#9F7CEF]"> Your Restaurant Intelligence Layer</span>
     </h2>
 
-    {/* LOTTIE ANIMATION */}
-    <div
-      className="
-        w-full max-w-[1000px]
-        h-[35vh] sm:h-[55vh] md:h-[90vh]
-        flex justify-center items-center
-        overflow-visible mx-auto
-      "
-    >
-      <div className="scale-[0.9] sm:scale-[1.05] md:scale-[1.2] w-full flex justify-center items-center">
-        <Lottie animationData={restrobrainData} loop autoplay style={{ width: "100%", height: "100%" }} />
-      </div>
-    </div>
+  {/* LOTTIE ANIMATION */}
+<div
+  className="
+    w-full max-w-[1000px] sm:max-w-[1100px] md:max-w-[1200px] lg:max-w-[1300px]
+    xl:max-w-[1400px] 2xl:max-w-[1500px]
+    h-[35vh] sm:h-[55vh] md:h-[80vh] lg:h-[85vh] xl:h-[90vh]
+    flex justify-center items-center
+    overflow-visible mx-auto
+  "
+>
+  <div className="scale-[0.95] sm:scale-[1.05] md:scale-[1.15] lg:scale-[1.25] xl:scale-[1.3] w-full flex justify-center items-center">
+    <Lottie animationData={restrobrainData} loop autoplay style={{ width: "100%", height: "100%" }} />
+  </div>
+</div>
+
 
     {/* INFO BLOCKS */}
     <div
