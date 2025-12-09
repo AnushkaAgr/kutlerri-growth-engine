@@ -246,7 +246,7 @@ const Home = () => {
         font-garnett font-normal
         text-[22px] sm:text-[30px] md:text-[48px] xl:text-[56px]
         leading-tight tracking-tight text-black
-       mb-8 sm:mb-10 md:mb-14 text-center
+       mb-8 sm:mb-10 md:mb-14 text-center relative z-10
       "
     >
       RestroBrain – 
@@ -344,7 +344,7 @@ const Home = () => {
         font-garnett font-normal
         text-[22px] sm:text-[30px] md:text-[48px] xl:text-[56px]
         leading-tight tracking-tight text-black
-        mb-8 sm:mb-10 md:mb-14 text-center
+        mb-8 sm:mb-10 md:mb-14 text-center relative z-10
       "
     >
       CaterReach – 
