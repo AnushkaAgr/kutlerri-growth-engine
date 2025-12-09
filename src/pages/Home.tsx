@@ -287,7 +287,7 @@ const Home = () => {
       className="
         w-full max-w-[1300px]
         grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-        gap-5 sm:gap-6 md:gap-8 mt-8 sm:mt-10 md:mt-12 px-8
+        gap-5 sm:gap-6 md:gap-8 mt-8 sm:mt-10 md:mt-12 px-8 relative z-9
       "
     >
       {/* BLOCK 1 */}
@@ -385,7 +385,7 @@ const Home = () => {
       className="
         w-full max-w-[1300px]
         grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-        gap-5 sm:gap-6 md:gap-8 mt-8 sm:mt-10 md:mt-12 px-8
+        gap-5 sm:gap-6 md:gap-8 mt-8 sm:mt-10 md:mt-12 px-8 relative z-9
       "
     >
       {/* BLOCK 1 */}
@@ -482,12 +482,6 @@ Services*/}
 
   </div>
 </section>
-
-
-
-
-
-
 
 {/* SERVICES */}
       {/* {<section
