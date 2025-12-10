@@ -430,26 +430,32 @@ const Home = () => {
 
 
 
-      { /* Fully Managed
-Services*/}    
-<section className="relative w-[calc(100%-2.5rem)] mx-5 flex justify-center items-end bg-gradient-to-r from-[#EEE6FF] to-[#9F7CEF] rounded-[30px] md:rounded-[43px] mt-10 mb-10 overflow-hidden">
-  <div className="max-w-[1440px] w-full flex flex-col md:flex-row items-end justify-between gap-10 md:gap-16 pl-6 pr-0 md:px-10">
+       
+{/* Fully Managed Services */}
+<section className="relative w-[calc(100%-2.5rem)] mx-5 flex flex-col md:flex-row justify-center items-center md:items-end bg-gradient-to-r from-[#EEE6FF] to-[#9F7CEF] rounded-[30px] md:rounded-[43px] mt-10 mb-10 overflow-hidden">
+  <div className="max-w-[1440px] w-full flex flex-col md:flex-row items-center md:items-end justify-between gap-10 md:gap-16 px-4 sm:px-6 md:px-10">
 
     {/* LEFT TEXT CONTENT */}
-    <div className="flex flex-col text-center md:text-left max-w-[600px] z-20 pt-16 pb-10 md:pb-14 md:pt-20">
-      <h2 className="text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px] font-['Garnett'] font-normal leading-[110%] tracking-[-0.6px] text-black">
+    <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:max-w-[600px] z-20 pt-12 pb-6 md:pb-14 md:pt-20">
+      <h2 className="text-[28px] sm:text-[42px] md:text-[56px] lg:text-[72px] font-['Garnett'] font-normal leading-[110%] tracking-[-0.6px] text-black">
         Fully Managed <br className="hidden md:block" /> Services
       </h2>
-      <p className="text-[15px] sm:text-[17px] md:text-[20px] mt-4 text-black/70">
+      <p className="text-[15px] sm:text-[17px] md:text-[20px] mt-4 text-black/70 max-w-[90%] md:max-w-none mx-auto md:mx-0">
         Kutlerri is more than a platform. We become an extension of your team.
       </p>
     </div>
 
     {/* RIGHT SIDE — JSON ANIMATION */}
-    <div className="absolute bottom-0 right-0 w-full md:w-[60%] lg:w-[55%] flex justify-end items-end">
+    <div
+      className="
+        w-full md:w-[60%] lg:w-[55%]
+        flex justify-center md:justify-end items-center
+        mt-6 md:mt-0
+      "
+    >
       <div
         className="
-          w-[100%] sm:w-[500px] md:w-[600px] lg:w-[680px] xl:w-[750px]
+          w-[85%] sm:w-[500px] md:w-[600px] lg:w-[680px] xl:w-[750px]
           relative
         "
         style={{
@@ -466,11 +472,10 @@ Services*/}
             width: "100%",
             height: "100%",
             marginBottom: "0",
-            
             clipPath:
               window.innerWidth >= 1024
-                ? "inset(0 30% 0 0)" 
-                : "inset(0 0 0 0)", 
+                ? "inset(0 30% 0 0)" // desktop cropped look
+                : "inset(0 0 0 0)", // full view on mobile
             transform:
               window.innerWidth >= 1024
                 ? "scale(1.3) translateX(175px)"
@@ -483,132 +488,6 @@ Services*/}
   </div>
 </section>
 
-{/* SERVICES */}
-      {/* {<section
-        id="services-section"
-        className="
-    relative
-    w-full
-    min-h-[750px]
-    md:min-h-[850px]
-    flex
-    items-center
-    justify-center
-    overflow-hidden
-    bg-black
-  "
-      >
-      
-        <img
-          src={Services}
-          alt="Services"
-          className="
-      absolute inset-0
-      w-full h-full
-      object-cover
-      object-center
-      m-0 p-0
-      z-0
-    "
-        />
-
-   
-        <div
-          className="
-      absolute inset-0
-      bg-gradient-to-r from-black/60 via-black/40 to-transparent
-      z-10
-    "
-        />
-
-    
-        <div
-          className="
-      relative z-20
-      w-full
-      max-w-[1440px]
-      flex flex-col md:flex-row
-      justify-between
-      items-start
-      px-6 sm:px-10 md:px-16 lg:px-24
-      py-20 md:py-32
-      text-white
-      gap-12 md:gap-0
-    "
-        >
-         
-          <div className="flex-1 max-w-[600px] text-left">
-            <h1
-              className="
-          font-garnett font-light
-          text-[40px] sm:text-[56px] md:text-[72px] lg:text-[84px]
-          leading-[110%]
-          mb-6
-        "
-            >
-              Fully Managed <br /> Services
-            </h1>
-            <p
-              className="
-          font-gotham font-light
-          text-[16px] sm:text-[18px] md:text-[22px] lg:text-[24px]
-          leading-[150%]
-          text-white/90
-          max-w-[500px]
-        "
-            >
-              Kutlerri is more than a platform.
-              We become an extension of your team.
-            </p>
-          </div>
-
-          <div
-            className="
-        flex-1
-        flex flex-col
-        gap-8 sm:gap-10
-        items-start md:items-end
-        md:text-right
-      "
-          >
-           
-            <div className="flex items-start gap-4 sm:gap-6">
-              <img
-                src={Spoon}
-                alt="spoon"
-                className="w-[18px] sm:w-[20px] md:w-[22px] lg:w-[24px] h-auto"
-              />
-              <p
-                className="
-            text-[22px] sm:text-[26px] md:text-[32px] lg:text-[34px]
-            font-garnett
-            leading-tight
-          "
-              >
-                Restaurant <br /> Intelligence
-              </p>
-            </div>
-
-           
-            <div className="flex items-start gap-4 sm:gap-6">
-              <img
-                src={Knife}
-                alt="knife"
-                className="w-[10px] sm:w-[12px] md:w-[14px] lg:w-[16px] h-auto"
-              />
-              <p
-                className="
-            text-[22px] sm:text-[26px] md:text-[32px] lg:text-[34px]
-            font-garnett
-            leading-tight
-          "
-              >
-                B2B Catering <br /> Lead Generation
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> } */}
 
 
 

@@ -63,8 +63,9 @@ export const StackCard = ({ card, index, totalCards }: StackCardProps) => {
           border-0 shadow-md
           ${index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"}`}
       >
+
         {/* TEXT SIDE */}
-        <div className="w-full md:w-1/2 bg-white flex items-center justify-center px-6 md:px-14 py-12">
+        <div className="w-full md:w-1/2 bg-white flex items-center justify-center px-6 md:px-14 py-10 md:py-12 order-1 md:order-none">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -76,19 +77,17 @@ export const StackCard = ({ card, index, totalCards }: StackCardProps) => {
             viewport={{ once: true }}
             className="w-full max-w-[600px] text-left"
           >
-            <h2 className="font-garnett font-normal text-[38px] sm:text-[48px] md:text-[60px] leading-[110%] tracking-tight text-black">
+            <h2 className="font-garnett font-normal text-[34px] sm:text-[48px] md:text-[60px] leading-[110%] tracking-tight text-black">
               {card.title}
             </h2>
 
             {card.subtitle && (
-              <p className="font-garnett font-normal text-[22px] sm:text-[26px] md:text-[32px] text-black mt-1">
+              <p className="font-garnett font-normal text-[20px] sm:text-[26px] md:text-[32px] text-black mt-1">
                 {card.subtitle}
               </p>
             )}
 
-            <p
-              className="mt-5 sm:mt-6 md:mt-8 font-gotham text-[15px] sm:text-[17px] md:text-[18px] leading-[150%] tracking-[-0.3px] text-[#4D455C]"
-            >
+            <p className="mt-4 sm:mt-6 md:mt-8 font-gotham text-[15px] sm:text-[17px] md:text-[18px] leading-[150%] tracking-[-0.3px] text-[#4D455C]">
               {card.description1}{" "}
               <span
                 className="font-gotham font-[350]"
@@ -145,10 +144,11 @@ export const StackCard = ({ card, index, totalCards }: StackCardProps) => {
         <div
           className={`
             w-full md:w-1/2 flex items-center justify-center
-            p-0
-            ${index % 2 === 1
-              ? "bg-gradient-to-br from-[#EEE6FF] to-[#C1A6FF] md:rounded-bl-[40px]"
-              : "bg-gradient-to-tl from-[#EEE6FF] to-[#C1A6FF] md:rounded-tr-[40px]"
+            p-6 md:p-0 order-2 md:order-none
+            ${
+              index % 2 === 1
+                ? "bg-gradient-to-br from-[#EEE6FF] to-[#C1A6FF] md:rounded-bl-[40px]"
+                : "bg-gradient-to-tl from-[#EEE6FF] to-[#C1A6FF] md:rounded-tr-[40px]"
             }
             rounded-b-[40px] md:rounded-none
           `}
@@ -157,7 +157,7 @@ export const StackCard = ({ card, index, totalCards }: StackCardProps) => {
             src={card.image}
             alt={card.title}
             className="
-              w-[584px] max-w-[90%]
+              w-[80%] sm:w-[70%] md:w-[584px]
               h-auto object-contain
               transition-transform duration-700 hover:scale-[1.05]
               mx-auto
