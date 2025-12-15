@@ -8,7 +8,7 @@ export default defineConfig({
     host: "::",
     port: 8080,
   },
-  base: "/kutlerri-growth-engine/",
+  base: "/",
   plugins: [react()],
   resolve: {
     alias: {

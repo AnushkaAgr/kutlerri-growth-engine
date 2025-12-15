@@ -144,7 +144,7 @@ const Navigation = () => {
           {/* OTHER LINKS */}
           <li>
             <Link
-              to="/resources"
+              to="/"
               className={`cursor-pointer text-black  hover:text-[#7138F5] font-garnett ${
                 isActive("/resources") ? "underline underline-offset-4" : ""
               }`}
@@ -155,7 +155,7 @@ const Navigation = () => {
 
           <li>
             <Link
-              to="/company"
+              to="/"
               className={`cursor-pointer text-black font-garnett hover:text-[#7138F5]  ${
                 isActive("/company") ? "underline underline-offset-4" : ""
               }`}
@@ -168,7 +168,7 @@ const Navigation = () => {
         {/* CTA BUTTON */}
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
           <Link
-            to="/contact"
+            to="/"
             className="hidden lg:flex items-center justify-center
             w-[153px] h-[42px] rounded-full
             bg-[#7138F5] text-white hover:bg-black

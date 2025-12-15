@@ -140,11 +140,11 @@ export const StackCard = ({ card, index, totalCards }: StackCardProps) => {
           </motion.div>
         </div>
 
-        {/* IMAGE SIDE */}
+        {/* IMAGE SIDE — perfectly centered with proper right spacing */}
         <div
           className={`
             w-full md:w-1/2 flex items-center justify-center
-            p-6 md:p-0 order-2 md:order-none
+            p-6 sm:p-10 md:p-0 order-2 md:order-none
             ${
               index % 2 === 1
                 ? "bg-gradient-to-br from-[#EEE6FF] to-[#C1A6FF] md:rounded-bl-[40px]"
@@ -153,16 +153,21 @@ export const StackCard = ({ card, index, totalCards }: StackCardProps) => {
             rounded-b-[40px] md:rounded-none
           `}
         >
-          <img
-            src={card.image}
-            alt={card.title}
-            className="
-              w-[80%] sm:w-[70%] md:w-[584px]
-              h-auto object-contain
-              transition-transform duration-700 hover:scale-[1.05]
-              mx-auto
-            "
-          />
+          <div className="flex justify-center items-center w-full h-full px-4 sm:px-8 md:px-10">
+            <img
+              src={card.image}
+              alt={card.title}
+              className="
+                w-[78%] sm:w-[70%] md:w-[584px]
+                h-auto object-contain
+                transition-transform duration-700 hover:scale-[1.05]
+                block mx-auto
+              "
+              style={{
+                objectPosition: "center center",
+              }}
+            />
+          </div>
         </div>
       </motion.div>
     </motion.div>

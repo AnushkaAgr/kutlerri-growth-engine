@@ -474,8 +474,9 @@ const Home = () => {
             marginBottom: "0",
             clipPath:
               window.innerWidth >= 1024
-                ? "inset(0 30% 0 0)" // desktop cropped look
-                : "inset(0 0 0 0)", // full view on mobile
+              // ? "inset(0 30% 0 0)"
+              ?""
+                : "inset(0 0 0 0)", 
             transform:
               window.innerWidth >= 1024
                 ? "scale(1.3) translateX(175px)"
@@ -494,7 +495,7 @@ const Home = () => {
 
 
 {/* TESTIMONIAL SECTION */}
-<section
+{/* <section
   id="testimonial-section"
   className="
     relative
@@ -521,11 +522,11 @@ const Home = () => {
     "
   />
 
-  {/* Main Testimonial Component */}
+ 
   <div className="relative z-10 w-full max-w-[1440px]">
     <TestimonialSection />
   </div>
-</section>
+</section> */}
 
 
     </div>
